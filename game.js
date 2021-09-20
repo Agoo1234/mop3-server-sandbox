@@ -5,7 +5,7 @@ const gamemode = 0
 
 
 const maxplayers = 50
-const maxbots = 30
+const maxbots = 25
 const timeupgrade = 15 // in seconds
 const maxips = 2
 const botsabilityuse = false
