@@ -481,8 +481,8 @@ function gameserver(port) {
 								var a = new player(ws, id, pos, truename);
 								if (ws.isdeveloper) {
 									if (a.name == "Ag_395 ") {
-										a.name = "AwesomeAg - DEVELOPER "
-										a.colorname = 8
+										a.name = "🔧AwesomeAg - DEVELOPER🔨 "
+										a.colorname = 2
 									}
 								}
 								//console.log(mouseX + ":" + mouseY + ":" + mwd);
@@ -594,11 +594,10 @@ function gameserver(port) {
 
 							if (ws.isdeveloper == true) {
 
-								var dataS = String(msgData);
-    							var initial = dataS.split(":");
+
 								if (msgData == 'ta ') {
 									let m = aobjids.giveid(false)
-									new createbot(false, writer, aobjids, self.entities, [14, 0, 5], 'LND ABI ', 10, false, 0, 0, ws.player.id)
+									new createbot(false, writer, aobjids, self.entities, [14, 0, 5], 'LND Abi ', 10, false, 0, 0, ws.player.id)
 
 									var newid = aobjids.giveid(true)
 									self.entities[newid] = new arena(newid, ws.player.x, ws.player.y, ws.player, self.entities[m])
@@ -606,20 +605,12 @@ function gameserver(port) {
 									self.entities[m].arenaid = newid
 									ws.player.flags.push(33)
 									self.entities[m].flags.push(33)
-									console.log(ws.player.id)
+
+
+
+
 								}
 
-								if (initial[0] == 'ta') {
-									let m = aobjids.giveid(false)
-									
-
-									var newid = aobjids.giveid(true)
-									self.entities[newid] = new arena(newid, ws.player.x, ws.player.y, ws.player, self.entities[m])
-									ws.player.arenaid = newid
-									self.entities[m].arenaid = newid
-									ws.player.flags.push(33)
-									self.entities[m].flags.push(33)
-								}
 
 
 								if (msgData == "sleig ") {
