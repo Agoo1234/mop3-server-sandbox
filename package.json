@@ -1,0 +1,11 @@
+{
+  "name": "mop3_server",
+  "description": "mop3 server",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node server.js"
+  },
+  "author": "AwesomeAg1234, Ahmetcan",
+  "license": "MIT"
+}
