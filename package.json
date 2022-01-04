@@ -7,5 +7,9 @@
     "build": "node server.js"
   },
   "author": "AwesomeAg1234, Ahmetcan",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  }
 }
