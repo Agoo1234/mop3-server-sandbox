@@ -3,7 +3,8 @@
   "description": "mop3 server",
   "version": "1.1.0",
   "dependencies": {
-    "victor": "1.1.0"
+    "victor": "1.1.0",
+    "ws": "8.5.0"
   },
   "scripts": {
     "start": "node server.js",
