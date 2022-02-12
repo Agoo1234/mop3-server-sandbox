@@ -1,21 +1,16 @@
 
 const tierload1 = require("./choices/tierschoice")
 const tierload = new tierload1()
-var tier11 = tierload.tier11(true)
 var tier13 = tierload.tier13(true)
 var tier14 = tierload.tier14(true)
 var tier15 = tierload.tier15(true)
 var tier16 = tierload.tier16(true)
 var bosstier = tierload.bosstier(true)
-var t11 = [];
 var t13 = [];
 var t14 = [];
 var t15 = [];
 var t16 = [];
 var tboss = []
-for (var i = 0; i < tier11.length / 3; i++) {
-    t11.push(tier11[i * 3])
-}
 for (var i = 0; i < tier13.length / 3; i++) {
     t13.push(tier13[i * 3])
 }
@@ -38,7 +33,7 @@ function animalswitcher(player, writer, id) {
 
     switch (player.tier) {
         case 16:
-            player.oldupxp = 10000000
+            player.oldupxp = 30000000
             player.maxhp = player.hp = 250
             player.angles.anglespeed = 20
             player.foods = [50, 51, 83, 82, 35, 37, 32, 48, 22, 24, 21]
@@ -46,11 +41,7 @@ function animalswitcher(player, writer, id) {
                 if (player.isplayer) {
 
                     player.playcamera = 1.5;
-                    
-                    for (var m in t11) {
-                        player.preys.push(t11[m])
-                        player.tailbite.push(t11[m])
-                    }
+
                     for (var m in t13) {
                         player.preys.push(t13[m])
                         player.tailbite.push(t13[m])
@@ -78,7 +69,7 @@ function animalswitcher(player, writer, id) {
             break;
 
         case 15:
-            player.oldupxp = 5000000
+            player.oldupxp = 10000000
             player.maxhp = player.hp = 150
             player.angles.anglespeed = 23
             player.foods = [50, 51, 83, 82, 35, 37, 32, 48, 22, 24, 21]
@@ -89,11 +80,7 @@ function animalswitcher(player, writer, id) {
                     player.tailbite = [t14,
                         t15, t16]
                     player.predators = [t16]
-                    player.preys = [t14, t13, t11]
-                    for (var m in t11) {
-                        player.preys.push(t11[m])
-                        player.tailbite.push(t11[m])
-                    }
+                    player.preys = [t14]
                     for (var m in t13) {
                         player.preys.push(t13[m])
                         player.tailbite.push(t13[m])
@@ -126,10 +113,6 @@ function animalswitcher(player, writer, id) {
             if (!player.isbot) {
                 if (player.isplayer) {
                     player.playcamera = 1.6;
-                    for (var m in t11) {
-                        player.preys.push(t11[m])
-                        player.tailbite.push(t11[m])
-                    }
                     for (var m in t13) {
                         player.preys.push(t13[m])
                         player.tailbite.push(t13[m])
@@ -161,10 +144,6 @@ function animalswitcher(player, writer, id) {
             if (!player.isbot) {
                 if (player.isplayer) {
                     player.playcamera = 1.75;
-                    for (var m in t11) {
-                        player.preys.push(t11[m])
-                        player.tailbite.push(t11[m])
-                    }
                     for (var m in t14) {
                         player.predators.push(t14[m])
                         player.tailbite.push(t14[m])
@@ -187,39 +166,6 @@ function animalswitcher(player, writer, id) {
             }
             break
 
-
-            case 11:
-                player.oldupxp = 105000
-                player.foods = [50, 51, 83, 82, 35, 37, 32, 48, 22, 24, 21]
-                player.angles.anglespeed = 20
-                if (!player.isbot) {
-                    if (player.isplayer) {
-                        player.playcamera = 1.5;
-                        for (var m in t13) {
-                            player.predators.push(t13[m])
-                            player.tailbite.push(t13[m])
-                        }
-                        for (var m in t14) {
-                            player.predators.push(t14[m])
-                            player.tailbite.push(t14[m])
-                        }
-                        for (var m in t15) {
-                            player.predators.push(t15[m])
-                            player.tailbite.push(t15[m])
-                        }
-                        for (var m in t16) {
-                            player.predators.push(t16[m])
-                            player.tailbite.push(t16[m])
-                        }
-                        for (var m in tboss) {
-    
-                            player.predators.push(tboss[m])
-                        }
-                        player.zoomwidth = innerWidth / 1.6
-                        player.zoomheight = innerHeight / 1.6
-                    }
-                }
-                break
         default:
             player.foods = []
             if (!player.isbot) {

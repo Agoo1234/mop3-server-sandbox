@@ -46,7 +46,7 @@ function map(aobjids, entities) {
     if (game.load(2) != 2) {
         var landobjids = aobjids.giveid(true);
         var oldland = new land(landobjids, game)
-        oldland.maxmushroomamount = 200
+        oldland.maxmushroomamount = 0
 
         entities[landobjids] = oldland;
 

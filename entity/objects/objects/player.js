@@ -210,7 +210,11 @@ function player(ws, id, pos, name) {
     this.veloY = 0
     this.oldupxp = 0
     this.spawnedtime = Date.now();
+    
 };
+
+
+
 player.prototype.customdatawriteoncreateforanimal = function (buf, off) {
 }
 player.prototype.customdatawriteonupdateforanimal = function (buf, off) {

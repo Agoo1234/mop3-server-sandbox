@@ -105,81 +105,80 @@ function normalplayercheck(aobjids, ws_new, entities, i, writer) {
 
         }
         //  console.log(entities[i])
-        if (entities[i].type == 2) {
-            let customwitch = 0
-            if (entities[i].abilitys.button_w.abil_currentclick == 1) {
-                customwitch = new holdingobj(aobjids, i, entities, writer, ws_new)
+        let customwitch = 0
+        if (entities[i].abilitys.button_w.abil_currentclick == 1) {
+            customwitch = new holdingobj(aobjids, i, entities, writer, ws_new)
+        }
+        if (entities[i].abilitys.button_w_mini.abil_Type == 100) {
+            if ((((entities[i].bar.normalbar == 0 && entities[i].biome != 1 || entities[i].bar.normalbar == 2 && entities[i].biome != 3))
+                || (entities[i].bar.airbarpercentage == 0.01) || (entities[i].isintree || entities[i].isflying)) && entities[i].isdiving) {
+                entities[i].abilitys.button_w_mini.abil_active = false
+                entities[i].abilitys.button_w_mini.abil_recharging = true
+                entities[i].abilitys.button_w_mini.abil_timestamp = Date.now() + entities[i].abilitys.button_w_mini.abil_time * 1000;
+                entities[i].isdiving = false
+
+                if (entities[i].ws) {
+                    entities[i].ws.send(writer.abilitytimer(entities[i].abilitys, 0))
+                }
             }
-            if (entities[i].abilitys.button_w_mini.abil_Type == 100) {
-                if ((((entities[i].bar.normalbar == 0 && entities[i].biome != 1 || entities[i].bar.normalbar == 2 && entities[i].biome != 3))
-                    || (entities[i].bar.airbarpercentage == 0.01) || (entities[i].isintree || entities[i].isflying)) && entities[i].isdiving) {
+            if (entities[i].abilitys.button_w_mini.abil_currentclick == 0) {
+                if (entities[i].isdiving) {
                     entities[i].abilitys.button_w_mini.abil_active = false
                     entities[i].abilitys.button_w_mini.abil_recharging = true
                     entities[i].abilitys.button_w_mini.abil_timestamp = Date.now() + entities[i].abilitys.button_w_mini.abil_time * 1000;
                     entities[i].isdiving = false
 
                     if (entities[i].ws) {
-                        entities[i].ws.send(writer.abilitytimer(entities[i].abilitys, 0))
-                    }
-                }
-                if (entities[i].abilitys.button_w_mini.abil_currentclick == 0) {
-                    if (entities[i].isdiving) {
-                        entities[i].abilitys.button_w_mini.abil_active = false
-                        entities[i].abilitys.button_w_mini.abil_recharging = true
-                        entities[i].abilitys.button_w_mini.abil_timestamp = Date.now() + entities[i].abilitys.button_w_mini.abil_time * 1000;
-                        entities[i].isdiving = false
-
-                        if (entities[i].ws) {
-                            entities[i].ws.send(writer.abilitytimer(entities[i].abilitys, customwitch))
-                        }
+                        entities[i].ws.send(writer.abilitytimer(entities[i].abilitys, customwitch))
                     }
                 }
             }
+
         }
+    }
+
+
+    if (entities[i].holdboost) {
+        if (!entities[i].isdead) {
+            if (entities[i].type == 2 && !entities[i].flags.includes(3) || entities[i].type == 64) {
+                if (entities[i].timerfrozen <= Date.now() && entities[i].timerstunned <= Date.now()) {
+                    if (entities[i].isabletoboost) {
+                        if (!entities[i].isflying) {
+                            if (entities[i].whenboost) {
+                                entities[i].boostingat = 0
+                                entities[i].whenboost = false
+                                entities[i].isboosting = true
+                                entities[i].isinboostingang = true
+                                entities[i].bar.normalbarpercentage -= 3
 
 
 
-        if (entities[i].holdboost) {
-            if (!entities[i].isdead) {
-                if (entities[i].type == 2 && !entities[i].flags.includes(3) || entities[i].type == 64) {
-                    if (entities[i].timerfrozen <= Date.now() && entities[i].timerstunned <= Date.now()) {
-                        if (entities[i].isabletoboost) {
-                            if (!entities[i].isflying) {
-                                if (entities[i].whenboost) {
-                                    entities[i].boostingat = 0
-                                    entities[i].whenboost = false
-                                    entities[i].isboosting = true
-                                    entities[i].isinboostingang = true
-                                    entities[i].bar.normalbarpercentage -= 3
-
-
-
-                                    setTimeout(() => {
+                                setTimeout(() => {
+                                    if (!entities[i]) return
+                                    if (entities[i].isdead) return;
+                                    entities[i].isinboostingang = false
+                                }, 250);
+                                setTimeout(
+                                    function () {
                                         if (!entities[i]) return
                                         if (entities[i].isdead) return;
-                                        entities[i].isinboostingang = false
-                                    }, 250);
-                                    setTimeout(
-                                        function () {
-                                            if (!entities[i]) return
-                                            if (entities[i].isdead) return;
-                                            entities[i].whenboost = true
-                                        }, 1500);
-                                    //   setTimeout(function(){ 		entities[i].isboosting = true  }, 100);
-                                }
+                                        entities[i].whenboost = true
+                                    }, 1500);
+                                //   setTimeout(function(){ 		entities[i].isboosting = true  }, 100);
                             }
                         }
                     }
                 }
-            } else {
-                try {
-                    clearTimeout(holdboosting)
-                } catch {
+            }
+        } else {
+            try {
+                clearTimeout(holdboosting)
+            } catch {
 
-                }
             }
         }
     }
+
 
 
     if (entities[i].type == 2) {

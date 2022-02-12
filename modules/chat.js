@@ -2,9 +2,18 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
 
     var dataS = String(msgData);
     var initial = dataS.split(":");
-    if (ws.isdeveloper == true) {
-     
-        if (msgData == 'ecl ') {
+    if (ws.isdeveloper == true) { 
+        if (msgData == 'heal ') { //heal player
+            ws.player.hp = 100
+            ws.player.barpercentage = 100
+        }
+        /*   if(msgData == 'tpall:hole '){
+               Object.keys(hole).forEach(function(da){
+               hole[da].x= ws.player.pos.x
+               hole[da].y = ws.player.pos.y
+               });
+           }*/
+        if (msgData == 'ecl ') { // count entities
             var count = 0
             for (let da in entities) {
                 if (entities[da].isloaded) {
@@ -14,7 +23,7 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
             console.log(count)
             ws.send(writer.chat(ws.player.id, count + " "))
         }
-        if (msgData == 'ec ') {
+        if (msgData == 'ec ') { // log in console, count entities
             var count = 0
             for (let da in entities) {
                 console.log(entities[da])
@@ -24,20 +33,25 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
             ws.send(writer.chat(ws.player.id, count + " "))
         }
 
-        if (msgData == 'up ') { ws.player.xp = 0 }
-        if (msgData == 'invis:off ') { ws.player.isinvisible = false }
-        if (msgData == 'invis:on ') { ws.player.isinvisible = true }
-        if (msgData == 'stop ') { process.exit(1); }
-        if (msgData == 'godmode:on ') {
+        if (msgData == 'up ') { ws.player.xp = 0 } // set xp to 0
+        if (msgData == 'invis:off ') { ws.player.isinvisible = false } // invis
+        if (msgData == 'invis:on ') { ws.player.isinvisible = true } // invis
+        if (msgData == 's:1 ') { ws.player.infability = true } //infability (doesnt work)
+        if (msgData == 's:0 ') { ws.player.infability = false } //infability (doesnt work)
+        if (msgData == 'stopserver ') { process.exit(1); } // stop server
+        if (msgData == 'godmode:on ') { //godmode on
             ws.player.godmode = true
         }
-        if (msgData == 'godmode:off ') {
+        if (msgData == 'godmode:off ') { //godmode off
             ws.player.godmode = false
         }
-     
+        /*for (var j in initial) {
+            console.log(initial[j])
+            if (isNaN(initial[j])) return
+        }*/
         switch (initial[0]) {
 
-            case "tpall":
+            case "tpall": // tp all entities to player
 
                 for (let da in entities) {
 
@@ -54,7 +68,7 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
 
                 }
                 break;
-            case "c":
+            case "c": // send messages through all players
 
                 for (let da in entities) {
                     if (entities[da].type == 2) {
@@ -72,7 +86,7 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 break
             case "cp":
 
-                for (let da in entities) {
+                for (let da in entities) { // send for players
                     if (entities[da].type == 2) {
                         if (entities[da].id != ws.player.id) {
                             if (entities[da].name == initial[1] + " ") {
@@ -88,12 +102,12 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
 
                 }
                 break
-            case "size":
+            case "size": // set size
                 let m = parseInt(initial[1])
                 if (m > 50) m = 50
                 ws.player.moreradius = m
                 break
-            case "changeall":
+            case "changeall": // change all entities
 
                 for (let da in entities) {
 
@@ -113,27 +127,34 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 }
                 break;
 
-            case "zoom":
+            case "zoom": // player zoom
                 ws.player.playcamera = parseInt(initial[1])
                 break;
-            case "tp":
+            case "tp": // teleport
                 ws.player.pos.x = parseInt(initial[1])
                 ws.player.pos.y = parseInt(initial[2])
                 console.log('Teleported to ' + 'x:' + initial[1] + 'y:' + initial[2])
                 break;
 
-            case "color":
+            case "color": // set color
+                ws.player.isinvisible = true
                 ws.player.colorname = parseInt(initial[1])
+                ws.player.isinvisible = false
 
 
                 break;
 
 
-            case "x":
+            case "x": // set xp
                 ws.player.xp = + parseInt(initial[1])
 
                 break;
-            case "createobj":
+        
+            case "xp": // set xp
+                ws.player.xp = + parseInt(initial[1])
+    
+                break;
+            case "createobj": // create object
 
                 var randomid = randomparseInt(200000000, 250000000)
 
@@ -141,40 +162,14 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 objrad = parseInt(initial[2])
 
                 break;
-            case "species":
+            case "species": // change species
                 ws.player.species = parseInt(initial[1])
-                break;
-            
-            case "kill":
-                for (let da in entities) {
-                    if (entities[da].type == 2){
-                        var string = initial[1]
-                        if (entities[da].name.includes(string)){
-                            entities[da].exit
-                        }
-                    }
-                }
-                break;
-            case "goto":
-                var area = initial[1]
-                switch(initial[1]){
-                    case "right_ocean":
-                        ws.player.pos.x = 1000
-                        ws.player.pos.y = 5000
-                        break;
-                    case "left_ocean":
-                        ws.player.pos.x = 8000
-                        ws.player.pos.y = 5000
-                        break;
-                    case "volcano":
-                        ws.player.pos.x = 4500
-                        ws.player.pos.y = 5000
-                        break;
-                    case "arctic":
-                        ws.player.pos.x = 4500
-                        ws.player.pos.y = 1000
-                        break;
-                }
+
+
+
+
+
+
                 break;
             case "change":
 
@@ -185,6 +180,7 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
             case "a":
 
                 ws.player.secondaryType = parseInt(initial[1])
+
 
 
 

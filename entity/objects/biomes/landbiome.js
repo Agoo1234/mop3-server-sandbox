@@ -27,7 +27,7 @@ function land(id, game) {
     this.isloaded = false
 
     this.maxmushroomamount = 200
-    this.mushroomamount = 100
+    this.mushroomamount = 0
     this.speed = 2.5
     this.killerid = 0
     this.isinvisible = false

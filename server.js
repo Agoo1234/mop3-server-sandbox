@@ -1,3 +1,3 @@
 const game = require('./gameserver')
 
-new game(8080)
+new game(6969)

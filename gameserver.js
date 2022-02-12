@@ -26,6 +26,7 @@ function gameserver(port) {
 	const reader = require("./modules/reader.js");
 
 	const WebSocket = require('ws');
+	var cors = require('cors')
 
 	const player = require("./entity/objects/objects/player.js");
 	const hidinghole = require("./entity/objects/objects/waterspot");
@@ -215,6 +216,7 @@ function gameserver(port) {
 				}
 				if (sum >= game.load(6)) {
 					ws.close();
+					console.log("closed game.load 6");
 					break;
 				}
 
@@ -223,6 +225,7 @@ function gameserver(port) {
 			ws.binaryType = 'arraybuffer';
 
 			ws.exists = false
+			
 			ws.correctstring = util.randomString(20)
 			ws.newstring = ""
 			ws.send(writer.codecheck(ws.correctstring))
@@ -235,9 +238,11 @@ function gameserver(port) {
 
 						clearInterval(mnm)
 						ws.close();
+						console.log("closed trys>20");
 						return
 					}
-					if (ws.correctstring + " " != ws.newstring) { ws.trys++; ws.send(writer.codecheck(ws.correctstring)); return };
+
+					if (ws.correctstring + " " != ws.newstring) { ws.trys; ws.send(writer.codecheck(ws.correctstring)); return };
 					ws.isdeveloper = false
 					new devsip(ws)
 
@@ -263,7 +268,8 @@ function gameserver(port) {
 
 					if (!ws.isdeveloper) ips.push(ws._socket.remoteAddress)
 
-					console.log("Player connected : ", ws._socket.remoteAddress);
+					console.log("Player connected : ", ws._socket.remoteAddress, "isdev: ", ws.isdeveloper);
+					
 
 					let randomentities = []
 
@@ -370,6 +376,8 @@ function gameserver(port) {
 
 			ws.on('error', function (error) {
 				ws.close();
+				console.log(error)
+				console.log("closed error");
 			})
 
 
@@ -418,7 +426,7 @@ function gameserver(port) {
 							ws.name = name
 
 							if (ws.name == " ") {
-								ws.name = "mop3.io "
+								ws.name = "mope.io "
 							}
 
 							console.log(ws.name + ":" + canvasW + ":" + canvasH + ", IP = " + ws._socket.remoteAddress);
@@ -449,16 +457,6 @@ function gameserver(port) {
 								new sclick(aobjids, ws.player.id, self.entities)
 							}
 							break
-								case 99:
-
-							var nameLen = MsgReader.readUInt16();
-
-							var ad = util.decode_utf8(MsgReader.readName((nameLen)));
-							if (ad == "MDKFKD0455 ") {
-
-								ws.isdeveloper = true
-							}
-							break
 						case 24:
 							if (!ws.exists) return;
 							let which = MsgReader.readUInt8();
@@ -480,8 +478,8 @@ function gameserver(port) {
 								let pos = new vector(0, 0); // spawn pos
 								var a = new player(ws, id, pos, truename);
 								if (ws.isdeveloper) {
-									if (a.name == "Ag_395 ") {
-										a.name = "🔧AwesomeAg - DEVELOPER🔨 "
+									if (a.name == "AwesomeAg ") {
+										a.name = "AwesomeAg - DEVELOPER🔨 "
 										a.colorname = 2
 									}
 								}
@@ -597,7 +595,7 @@ function gameserver(port) {
 
 								if (msgData == 'ta ') {
 									let m = aobjids.giveid(false)
-									new createbot(false, writer, aobjids, self.entities, [14, 0, 5], 'LND Abi ', 10, false, 0, 0, ws.player.id)
+									new createbot(false, writer, aobjids, self.entities, [14, 0, 5], 'p ', 10, false, 0, 0, ws.player.id)
 
 									var newid = aobjids.giveid(true)
 									self.entities[newid] = new arena(newid, ws.player.x, ws.player.y, ws.player, self.entities[m])
@@ -731,14 +729,14 @@ function gameserver(port) {
 					var oldid = ws.id
 
 					setTimeout(() => {
-						ws = null
+						//ws = null
 						setTimeout(() => {
 							delete self.ws_new[oldid]//DESTROY HIM
-						}, 100);
-					}, 100);
+						}, 1000);
+					}, 1000);
 
 				}, 5000);
-				testclose()
+				//testclose()
 				//removes player
 			});
 			ws.updategame = function () {

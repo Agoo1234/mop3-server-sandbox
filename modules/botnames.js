@@ -3,9 +3,10 @@ function getRandomInt(min, max) {
 }
 var names = [
     "mope.io",
-    "joe mama",
-    "AwesomeAg fan",
-    "mop3 best"
+    "awesomeag pro",
+    "ahmetcan cool",
+    "server amazing",
+    "proxy gamer B)"
 ]
 function name() {
 

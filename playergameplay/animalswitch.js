@@ -587,6 +587,7 @@ function animalswitcher(player) {
                 oceanspeed: 3,
                 arcticspeed: 4.2,
                 lavaspeed: 4.40,
+                flyspeed: 6.5
 
             }
             player.bar.maxairbarpercentage = 50

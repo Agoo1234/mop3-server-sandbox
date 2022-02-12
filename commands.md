@@ -1,0 +1,24 @@
+- heal - heal the entity
+- ecl - send amount of entities in chat
+- ec - count entities in console and send in chat
+- invis - on/off - turn invisible 
+- up - set xp to 0
+- s - 1 or 0 - set infability
+- stopserver - stop server
+- godmode - on or off - turn on/off godmode
+- tpall - optional: name - tp all entities (with name if argument given) to you
+- c - send message through all players
+- cp - name - message         send message through players with name argument
+- changeall : (name,type,species,radius) - change all entities with given names in argument to certain animal
+- size - set size (give size as argument)
+- zoom - set client zoom
+- tp - tp to coordinates (arguments x,y)
+- color - set color with argument
+- x, xp - set xp
+- createobj - create object with given argument id arguments: (type/id , radius)
+- species - change species
+- change - change to given info (type, species, radius)
+- a - become certain animal (type)
+- ta -  1v1 a bot
+- sleig - sleigh
+- rest in chat will update soon

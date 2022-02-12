@@ -13,6 +13,7 @@ const crabsmash = require('../../entity/abilitys/crabuse')
 const yetitransform = require('../../entity/abilitys/yetitransformuse')
 
 const thunderabil = require('../../entity/abilitys/thunderabil')
+const falconabil = require('../../entity/abilitys/falconabil')
 
 const seaspecuse = require('../../entity/abilitys/seaspecuse')
 const stingscorpionabiluse = require('../../entity/abilitys/stingscorpionabiluse')
@@ -392,6 +393,11 @@ function abilities(aobjids, player, entities, writer, which, aws_new) {
 
 
 					}
+					break;
+				
+				case 57://thunderbird attack
+
+					new falconabil(entities, player, aobjids, writer, which)
 					break;
 
 				case 30:
