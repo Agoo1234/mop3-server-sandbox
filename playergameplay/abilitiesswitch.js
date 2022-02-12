@@ -44,7 +44,7 @@ function abilitiesswitcher(ability) {
                 abil_recharging: false,
                 abil_possible: true,
                 abil_active: false,
-                abil_time: 0,//7
+                abil_time: 7,//7
                 abil_firesectime: 0,//30
                 abil_lastsecfireuse: 0,//last used fire
                 abil_timestamptouch: Date.now(),
@@ -62,7 +62,7 @@ function abilitiesswitcher(ability) {
                 abil_recharging: false,
                 abil_possible: true,
                 abil_active: false,
-                abil_time: 0,
+                abil_time: 2,
                 abil_timestamp: Date.now(),
                 abil_noflags: [],
                 abil_bardivideusable: 1,
@@ -92,7 +92,7 @@ function abilitiesswitcher(ability) {
                 abil_recharging: false,
                 abil_possible: true,
                 abil_active: false,
-                abil_time: 9,
+                abil_time: 7.5,
                 abil_timestamp: Date.now(),
                 abil_noflags: [20, 19],
                 abil_bardivideusable: 1,
@@ -124,7 +124,7 @@ function abilitiesswitcher(ability) {
                 abil_recharging: false,
                 abil_possible: true,
                 abil_active: false,
-                abil_time: 10,
+                abil_time: 8,
                 abil_timestamp: Date.now(),
                 abil_noflags: [20, 19],
                 abil_bardivideusable: 1,
@@ -200,7 +200,7 @@ function abilitiesswitcher(ability) {
                 abil_recharging: false,
                 abil_possible: true,
                 abil_active: false,
-                abil_time: 0,
+                abil_time: 6.75,
                 abil_timestamp: Date.now(),
                 abil_noflags: [20, 19],
                 abil_bardivideusable: 1,

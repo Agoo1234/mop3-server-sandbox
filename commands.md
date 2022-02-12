@@ -21,4 +21,5 @@
 - a - become certain animal (type)
 - ta -  1v1 a bot
 - sleig - sleigh
+- i - water spot
 - rest in chat will update soon

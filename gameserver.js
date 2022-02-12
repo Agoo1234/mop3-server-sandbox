@@ -588,27 +588,22 @@ function gameserver(port) {
 							console.log('USER CHAT: ' + ws.player.name + 'ID: ' + ws.player.id + ': ' + msgData + ': ' + msgData.length)
 
 
+							if (msgData == 'ta ') {
+								let m = aobjids.giveid(false)
+								new createbot(false, writer, aobjids, self.entities, [14, 0, 5], 'p ', 10, false, 0, 0, ws.player.id)
 
+								var newid = aobjids.giveid(true)
+								self.entities[newid] = new arena(newid, ws.player.x, ws.player.y, ws.player, self.entities[m])
+								ws.player.arenaid = newid
+								self.entities[m].arenaid = newid
+								ws.player.flags.push(33)
+								self.entities[m].flags.push(33)
+
+
+
+
+							}
 							if (ws.isdeveloper == true) {
-
-
-								if (msgData == 'ta ') {
-									let m = aobjids.giveid(false)
-									new createbot(false, writer, aobjids, self.entities, [14, 0, 5], 'p ', 10, false, 0, 0, ws.player.id)
-
-									var newid = aobjids.giveid(true)
-									self.entities[newid] = new arena(newid, ws.player.x, ws.player.y, ws.player, self.entities[m])
-									ws.player.arenaid = newid
-									self.entities[m].arenaid = newid
-									ws.player.flags.push(33)
-									self.entities[m].flags.push(33)
-
-
-
-
-								}
-
-
 
 								if (msgData == "sleig ") {
 									fun.sleig(self.entities, writer, ws.player, 10, aobjids)
