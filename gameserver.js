@@ -26,7 +26,6 @@ function gameserver(port) {
 	const reader = require("./modules/reader.js");
 
 	const WebSocket = require('ws');
-	var cors = require('cors')
 
 	const player = require("./entity/objects/objects/player.js");
 	const hidinghole = require("./entity/objects/objects/waterspot");
