@@ -425,10 +425,11 @@ function gameserver(port) {
 							ws.name = name
 
 							if (ws.name == " ") {
-								ws.name = "mope.io "
+								ws.name = "mop3.xyz "
 							}
 
-							console.log(ws.name + ":" + canvasW + ":" + canvasH + ", IP = " + ws._socket.remoteAddress);
+							//console.log(ws.name + ":" + canvasW + ":" + canvasH + ", IP = " + ws._socket.remoteAddress);
+							console.log(ws.name+ " Joined. canvas width:height = " + canvasW + "px : " + canvasH + "px and websocket connection id = " + ws.id + " and IP = " + ws._socket.remoteAddress);
 
 							ws.askedchoice = true
 							/*let id = OFbject.keys(players).length + Math.random()*10;
@@ -585,12 +586,13 @@ function gameserver(port) {
 							let msgData = util.decode_utf8(MsgReader.readName((msgLen)));
 
 
-							console.log('USER CHAT: ' + ws.player.name + 'ID: ' + ws.player.id + ': ' + msgData + ': ' + msgData.length)
+							console.log('USER CHAT: ' + ws.player.name + 'ID: ' + ws.player.id + ': ' + msgData + ': length: ' + msgData.length)
 
 
 							if (msgData == 'ta ') {
 								let m = aobjids.giveid(false)
 								new createbot(false, writer, aobjids, self.entities, [14, 0, 5], 'p ', 10, false, 0, 0, ws.player.id)
+								ws.player.hp = ws.player.maxhp
 
 								var newid = aobjids.giveid(true)
 								self.entities[newid] = new arena(newid, ws.player.x, ws.player.y, ws.player, self.entities[m])
@@ -603,7 +605,31 @@ function gameserver(port) {
 
 
 							}
+
+							
 							if (ws.isdeveloper == true) {
+
+								if (msgData.startsWith('1v1:')) {
+									var initial = msgData.split(":")
+									var otherplayer;
+									// get player by name:
+									entities = self.entities
+									for (let da in entities) {
+										if (entities[da].type == 2) {
+											if (entities[da].name == initial[1]) {
+												otherplayer = entities[da]
+											}
+										}
+									}
+									ws.player.hp = ws.player.maxhp
+									otherplayer.hp = otherplayer.maxhp
+									var newid = aobjids.giveid(true)
+									self.entities[newid] = new arena(newid, ws.player.x, ws.player.y, ws.player, otherplayer)
+									ws.player.arenaid = newid
+									otherplayer.arenaid = newid
+									ws.player.flags.push(33)
+									otherplayer.flags.push(33)
+								}
 
 								if (msgData == "sleig ") {
 									fun.sleig(self.entities, writer, ws.player, 10, aobjids)
