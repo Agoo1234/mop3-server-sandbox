@@ -42,6 +42,7 @@ function trexbiteuse(aobjids, entities, creator, other2, writer) {
                                         if (entities[i].type == 2) {
                                             if (!entities[i].isdiving) {
                                                 if (!entities[i].isflying) {
+                                                    if(entities[i].arenaid == 0) {
                                                     if (entities[i].timerstunned <= Date.now()) {
                                                         if (entities[i].id != entities[objids].spawnedby2) {
                                                             let distance = util.getDistance2D(entities[objids].x, entities[objids].y, entities[i].x, entities[i].y)
@@ -57,7 +58,8 @@ function trexbiteuse(aobjids, entities, creator, other2, writer) {
                                             }
                                         }
                                     }
-                                } else {
+                                }
+                             } else {
                                     if (entities[entities[objids].biteid] != undefined) {
 
                                         if (entities[creator] != undefined) {

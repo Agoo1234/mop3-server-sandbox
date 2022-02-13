@@ -4,7 +4,7 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
     var initial = dataS.split(":");
     if (ws.isdeveloper == true) { 
         if (msgData == 'heal ') { //heal player
-            ws.player.hp = 100
+            ws.player.hp = ws.player.maxhp
             ws.player.barpercentage = 100
         }
         /*   if(msgData == 'tpall:hole '){

@@ -59,7 +59,7 @@ function stinguse(entities, player, writer, which) {
                     for (let stingrab in entities) {
                         if (entities[stingrab].type == 2) {
                             if (!entities[stingrab].isgrabbed && entities[stingrab].timershivered <= Date.now() && !entities[stingrab].isdiving
-                                && !entities[stingrab].isflying) {
+                                && !entities[stingrab].isflying && entities[stingrab].arenaid ==0) {
                                 if (entities[stingrab].id != entities[player].id) {
                                     let distance = util.getDistance2D(entities[stingrab].x, entities[stingrab].y, mystingentity.x, mystingentity.y)
                                     if (distance <= entities[stingrab].radius + mystingentity.radius) {

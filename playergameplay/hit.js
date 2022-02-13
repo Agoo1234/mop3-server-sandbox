@@ -47,6 +47,10 @@ function tailbite(entities, player1, player2) {
                 player2.hp = player2.hp - player1.damage
                 var a = (rotate(player1.pos.x, player1.pos.y, player1.pos.x + 20, player1.pos.y, player1.angle));
                 var b = (rotate(player2.pos.x, player2.pos.y, player2.pos.x - 40, player2.pos.y, player1.angle));
+                if ((player1.secondaryType == 46 || player1.secondaryType == 79) && (player2.secondaryType != 46 || player2.secondaryType != 79)) {
+                    player2.timerburned = Date.now() + 1500
+
+                }
 
 
                 player1.pos.x = a.x

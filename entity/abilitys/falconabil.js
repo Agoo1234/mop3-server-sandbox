@@ -67,7 +67,7 @@ function falconabil(entities, player, aobjids, writer, which) {
                         entitycollider.radius = entities[player].radius / 1.75
                         for (var m in entities) {
                             if (entities[m].type == 2) {
-                                if (entities[m].id != entities[player].id) {
+                                if (entities[m].id != entities[player].id && entities[m].arenaid == 0) {
                                     let distance = util.getDistance2D(entitycollider.x, entitycollider.y, entities[m].x, entities[m].y)
                                     if (distance <= entitycollider.radius + entities[m].radius) {
                                         if (entities[m].timerstunned - 300 < Date.now()) {

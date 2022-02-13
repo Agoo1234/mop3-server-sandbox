@@ -51,7 +51,6 @@ function collisions(entities, i, j, aobjids) {
 
                                             if (amdistance <= (entity_1.radius + entity_2.radius) / 1.5) {
 
-
                                                 if (entity_1.speed >= 9) {
                                                     entity_2.hp -= 20
                                                     entity_2.lasthitby = entity_1.id
@@ -61,7 +60,8 @@ function collisions(entities, i, j, aobjids) {
 
 
 
-                                                } else {
+                                                } 
+                                                else {
                                                     entity_2.hp -= 4
                                                     entity_2.lasthitby = entity_1.id
                                                     let ang = entity_1.angle - util.randomNumber(-10, 10)
