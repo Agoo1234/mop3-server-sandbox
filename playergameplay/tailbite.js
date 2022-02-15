@@ -81,9 +81,10 @@ function tailbite(entities, player_1, player_2, distancemouth) {
 
 
                         }
+                        if (player_1.arenaid == 0 && player_2.arenaid == 0) {
                         entities[player_1].xp += entities[player_2].xp / 50
                         entities[player_2].xp -= entities[player_2].xp / 50
-
+                        }
                         //     setTimeout(function(){entities[player_1].gothitspeed = false}, 100);
 
 
