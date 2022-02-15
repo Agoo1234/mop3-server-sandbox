@@ -526,6 +526,7 @@ function collisions(entities, i, j, aobjids) {
 
                                 if (entity_2.spawnedby2 != entity_1.id) {
                                     if (entity_1.timerstunned <= Date.now() && entity_1.timerfrozen <= Date.now()) {
+                                        if (entity_1.arenaid == 0) {
 
                                         if (distanceplay <= entity_2.radius + entity_1.radius) {
 
@@ -552,13 +553,14 @@ function collisions(entities, i, j, aobjids) {
                                     }
 
                                 }
+                            }
 
                             }
 
 
 
 
-                            if (entity_2.type == 18 || entity_2.type == 70) {
+                            if ((entity_2.type == 18 || entity_2.type == 70) && entity_1.arenaid == 0) {
                                 if (entity_2.spawnedby2 != entity_1.id) {
                                     if (distanceplay <= entity_2.radius + entity_1.radius) {
 
