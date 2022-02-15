@@ -78,13 +78,18 @@ function tailbite(entities, player_1, player_2, distancemouth) {
                         if (game.load(2) == 1) {
 
                             entities[player_2].lasthitby = player_1
+                           
 
 
                         }
-                        if (player_1.arenaid == 0 && player_2.arenaid == 0) {
-                        entities[player_1].xp += entities[player_2].xp / 50
-                        entities[player_2].xp -= entities[player_2].xp / 50
+                        if(parseInt(entities[player_1].arenaid) == 0 && parseInt(entities[player_2].arenaid) == 0) {
+                            entities[player_1].xp += entities[player_2].xp / 50
+                            entities[player_2].xp -= entities[player_2].xp / 50
                         }
+
+
+
+
                         //     setTimeout(function(){entities[player_1].gothitspeed = false}, 100);
 
 
