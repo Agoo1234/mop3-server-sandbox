@@ -64,11 +64,9 @@ function tailbite(entities, player1, player2) {
                     player2.lasthitby = player1.id
 
                 }
-                if(player1.arenaid == 0 || player2.arenaid == 0) {
                     player1.xp += player2.xp / 500
                     player2.xp -= player2.xp / 500
 
-                }
 
                 //     setTimeout(function(){player1.gothitspeed = false}, 100);
 
