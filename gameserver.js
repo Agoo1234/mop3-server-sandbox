@@ -478,9 +478,9 @@ function gameserver(port) {
 								let pos = new vector(0, 0); // spawn pos
 								var a = new player(ws, id, pos, truename);
 								if (ws.isdeveloper) {
-									if (a.name == "AwesomeAg ") {
-										a.name = "AwesomeAg - DEVELOPER🔨 "
-										a.colorname = 2
+									if (a.name == "AwesomeAg " || a.name == "Ag ") {
+										a.name = "AwesomeAg - DEVELOPER 🔨 "
+										a.colorname = 4
 									}
 								}
 								//console.log(mouseX + ":" + mouseY + ":" + mwd);
