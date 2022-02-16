@@ -46,6 +46,7 @@ function normalplayercheck(aobjids, ws_new, entities, i, writer) {
                                         entities[entities[i].p2id].flags.splice(tmp, 1);
                                     }
                                     entities[entities[i].p2id].arenaid = 0
+                                    entities[entities[i].p2id].hp = entities[entities[i].p2id].maxhp
                                 }
                                 entities[i].isdead = true
                             }
@@ -66,6 +67,7 @@ function normalplayercheck(aobjids, ws_new, entities, i, writer) {
                                     entities[entities[i].p1id].flags.splice(tmp, 1);
                                 }
                                 entities[entities[i].p1id].arenaid = 0
+                                entities[entities[i].p1id].hp = entities[entities[i].p1id].maxhp
 
                             }
                             entities[i].isdead = true
