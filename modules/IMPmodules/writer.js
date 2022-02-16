@@ -564,7 +564,7 @@ writer.prototype = {
 
         return chatBuf.dataView.buffer;
     },
-    /*
+    
      
      
         devarerequests: function () {
@@ -626,7 +626,7 @@ writer.prototype = {
      
      
         },
-        */
+    
     aniinfo: function (species, playerid, nextxp, secondaryType, predators, preys, tailbite, foods) {
 
         var aninfo = new MsgWriter(21 + 3 + predators.length
