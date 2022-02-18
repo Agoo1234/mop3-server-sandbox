@@ -69,8 +69,11 @@ tiers.prototype = {
             32, 2, 1,
             32, 2, 2,
         ]
-        if (util.isnumbcorrectbetween(0, 1, random) || isall) {
+        if (util.isnumbcorrectbetween(0, 1, util.randomNumber(0, 2)) || isall) { // santa
             land.push(85, 0, 0)
+        }
+        if(util.isnumbcorrectbetween(0, 5, util.randomNumber(0, 6)) || isall) { // aqua yeti
+            ice.push(32, 2, 3)
         }
         let t = [];
         t = t.concat(lava)
