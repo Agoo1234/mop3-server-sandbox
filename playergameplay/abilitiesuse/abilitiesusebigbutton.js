@@ -11,6 +11,7 @@ const elephanttrunk = require('../../entity/abilitys/elephanttrunkuse')
 const iceabiluse = require('../../entity/abilitys/crystalfireuse')
 const crabsmash = require('../../entity/abilitys/crabuse')
 const yetitransform = require('../../entity/abilitys/yetitransformuse')
+const snowballuse = require('../../entity/abilitys/snowball/snowballuse')
 
 const thunderabil = require('../../entity/abilitys/thunderabil')
 const falconabil = require('../../entity/abilitys/falconabil')
@@ -199,6 +200,12 @@ function abilities(aobjids, player, entities, writer, which, aws_new) {
 					} else {
 						if (self.abilitys.button_w.abil_currentclick == 0) {
 							new yetitransform(aobjids, entities, player)
+							if(self.species == 3) {
+								new snowballuse(aobjids, 0, entities, player, 19)
+								new snowballuse(aobjids, 90, entities, player, 19)
+								new snowballuse(aobjids, 180, entities, player, 19)
+								new snowballuse(aobjids, 270, entities, player, 19)
+							}
 							self.abilitys.button_w.abil_active = false
 							self.abilitys.button_w.abil_recharging = true
 							self.specType = 1
