@@ -457,13 +457,12 @@ function animalswitcher(player) {
 
 
             break
-        case 32:
+        case 32: // yeti
             player.tier = 14
             player.bar.normalbar = 0
             player.whichbiome = 2
             player.nextxp = 10000000;
             player.transforming = false
-
             player.baserad = 40
             player.addrad = 0.2
             player.lessrad = 0.3
@@ -481,6 +480,20 @@ function animalswitcher(player) {
             player.abilitys.button_w_mini = abilitiesswitcher(100);
 
 
+            if(player.species == 3) { // aqua yeti
+                player.baserad = 60
+                player.addrad = 0.25
+                player.lessrad = 0.1
+
+                player.speed = {
+                    landspeed: 4.25,
+                    oceanspeed: 5,
+                    arcticspeed: 4.25,
+                    lavaspeed: 3,
+                }
+
+                player.bar.maxairbarpercentage = 100
+            }
 
             break
         case 61:
