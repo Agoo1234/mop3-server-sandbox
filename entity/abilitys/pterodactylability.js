@@ -166,7 +166,11 @@ function pterodactylability(entities, player, which) {
                                                     entities[grabbedwho].veloY = 0
                                                     entities[grabbedwho].hp -= 30
                                                     entities[grabbedwho].timerstunned = Date.now() + 2000
+                                                    try {
                                                     new deathhandle(entities, entities[grabbedwho].id, entities[player].id)
+                                                    } catch (err) {
+                                                        console.log(err) // to prevent crash
+                                                    }
                                                 }
 
                                             }, 10);
