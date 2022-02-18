@@ -8,6 +8,7 @@ const writer = new Writer()
 
 const utils1 = require('../modules/IMPmodules/util');
 const fire = require('../entity/objects/abilitys/fire');
+const snowball = require('../entity/objects/abilitys/snowball');
 const util = new utils1()
 function timecheck(entities, player, aobjids, aws_new) {
 
@@ -125,6 +126,16 @@ function timecheck(entities, player, aobjids, aws_new) {
 
                 }
                 break
+            
+            case 19:
+                if (self.spawnedtime + 2500 < Date.now()) {
+                    self.isdead = true;
+
+                    let newid = aobjids.giveid(true)
+                    entities[newid] = new snowball(newid, self.spawnedby2, self.x, self.y, self.specType, self.id, self.radius * 1.5, "SnowBall")
+                }
+                break
+
             case 87:
                 if (self.isloaded & self.spawnedtime + 200 <= Date.now()) {
                     if (self.lastfire + 50 <= Date.now()) {
