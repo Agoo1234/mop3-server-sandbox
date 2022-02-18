@@ -496,7 +496,7 @@ function collisions(entities, i, j, aobjids) {
 
                                     if (distanceplay <= entity_2.radius + entity_1.radius) {
                                         entity_1.hp -= 15
-                                        entity_1.timerfrozen = Date.now() + 2000;
+                                        entity_1.timerfrozen = Date.now() + 4250;
                                         entity_2.isdead = true
                                         entity_1.lasthitby = entity_2.spawnedby2
                                         new death(entities, entity_1.id, entity_2.spawnedby2)
