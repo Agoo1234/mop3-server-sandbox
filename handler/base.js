@@ -535,7 +535,7 @@ function basehandle(entities, player, aobjids, serverstarted, ws_news) {
         if (entities[player].flags.includes(99) || entities[player].isbot && entities[player].whichbiome != 1) {
             entities[player].bar.normalbarpercentage = 100
         }
-        if (entities[player].godmode) {
+        if (entities[player].godmode || entities[player].invincible) {
             entities[player].hp = entities[player].maxhp
             entities[player].bar.normalbarpercentage = entities[player].bar.maxbarnormalpercentage
         }
