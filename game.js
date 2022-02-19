@@ -11,6 +11,7 @@ const maxips = 2
 const botsabilityuse = false
 const collideeveryone = false
 const respawnbots = true
+const arenaqueue = []
 if (gamemode == 2) {
     gameW = 6000
     gameH = 6000
