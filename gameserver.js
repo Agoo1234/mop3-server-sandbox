@@ -612,10 +612,9 @@ function gameserver(port) {
 							if (msgData == 'arena ') {
 								if(ARENAQUEUE.length == 0 && !ARENAQUEUE.includes(ws.player.id)) {
 									ARENAQUEUE.push(ws.player.id)
-									console.log('added queue')
 								}
 
-								else if (ARENAQUEUE.length > 0) {
+								else if (ARENAQUEUE.length > 0 && !ARENAQUEUE.includes(ws.player.id)) {
 									newid = ARENAQUEUE[0]
 									ARENAQUEUE.shift();
 
@@ -634,9 +633,6 @@ function gameserver(port) {
 
 								}
 
-								else {
-									console.log(ARENAQUEUE.length)
-								}
 								msgData = ""
 
 							}
