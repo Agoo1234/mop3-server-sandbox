@@ -4,4 +4,4 @@ do
 	sleep 10800
 	sudo killall node
 
-Done
+done
