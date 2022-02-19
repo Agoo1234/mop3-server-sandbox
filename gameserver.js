@@ -1,3 +1,4 @@
+const { setFlagsFromString } = require("v8");
 
 function gameserver(port) {
 	const utils1 = require("./modules/IMPmodules/util")
@@ -70,6 +71,8 @@ function gameserver(port) {
 
 
 	const aobjids = new newobjids()
+
+	ARENAQUEUE = []// arena queue
 
 
 
@@ -603,6 +606,38 @@ function gameserver(port) {
 
 
 
+
+							}
+
+							if (msgData == 'arena ') {
+								if(ARENAQUEUE.length == 0 && !ARENAQUEUE.includes(ws.player.id)) {
+									ARENAQUEUE.push(ws.player.id)
+									console.log('added queue')
+								}
+
+								else if (ARENAQUEUE.length > 0) {
+									newid = ARENAQUEUE[0]
+									ARENAQUEUE.shift();
+
+									ws.player.hp = ws.player.maxhp
+									self.entities[newid].hp = self.entities[newid].maxhp
+
+									arenaid = aobjids.giveid(true)
+									self.entities[arenaid] = new arena(arenaid, ws.player.x, ws.player.y, ws.player, self.entities[newid])
+									ws.player.arenaid = arenaid
+									self.entities[newid].arenaid = arenaid
+
+									ws.player.flags.push(33)
+									self.entities[newid].flags.push(33)
+
+									console.log("1v1: " + ws.player.name + " vs " + self.entities[newid].name)
+
+								}
+
+								else {
+									console.log(ARENAQUEUE.length)
+								}
+								msgData = ""
 
 							}
 
