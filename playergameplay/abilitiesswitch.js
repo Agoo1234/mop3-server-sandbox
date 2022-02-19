@@ -83,6 +83,21 @@ function abilitiesswitcher(ability) {
                 abil_bardivideusable: 2.5,
             }
             break
+        case 47: // eagle abil
+            button = {
+
+                abil_currentclick: 0,
+                abil_Type: 47,
+                abil_usable: true,
+                abil_recharging: false,
+                abil_possible: true,
+                abil_active: false,
+                abil_time: 7.5,
+                abil_timestamp: Date.now(),
+                abil_noflags: [20, 9, 11, 12],
+                abil_bardivideusable: 2.5,
+                }
+            break
         case 30://fire
             button = {
 

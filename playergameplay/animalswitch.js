@@ -380,6 +380,7 @@ function animalswitcher(player) {
 
 
             break;
+
         case 53://trx
             player.tier = 14
             player.bar.normalbar = 0
@@ -564,6 +565,29 @@ function animalswitcher(player) {
             player.abilitys.button_w = abilitiesswitcher(35);
             player.abilitys.button_w_mini = abilitiesswitcher(100);
             break
+
+        case 56: // eagle
+            player.tier = 13
+            player.bar.normalbar = 0
+            player.whichbiome = 0
+            player.nextxp = 1000000;
+
+            player.baserad = 30
+            player.addrad = 0.25
+            player.lessrad = 0.2
+
+            player.speeds = {
+                landspeed: 4.25,
+                oceanspeed: 2,
+                arcticspeed: 4.25,
+                lavaspeed: 3.5,
+                flyspeed: 4.75
+            }
+            player.bar.maxairbarpercentage = 100
+            player.abilitys.button_w = abilitiesswitcher(47);
+            player.abilitys.button_w_mini = abilitiesswitcher(100);
+            break
+
         case 49:
             player.tier = 13
             player.bar.normalbar = 0
@@ -601,7 +625,6 @@ function animalswitcher(player) {
                 arcticspeed: 4.2,
                 lavaspeed: 4.40,
                 flyspeed: 6.5
-
             }
             player.bar.maxairbarpercentage = 50
             player.abilitys.button_w = abilitiesswitcher(57);

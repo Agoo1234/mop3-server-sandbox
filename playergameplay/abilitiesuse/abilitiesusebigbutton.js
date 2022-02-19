@@ -21,6 +21,7 @@ const stingscorpionabiluse = require('../../entity/abilitys/stingscorpionabiluse
 const spiderweb = require('../../entity/abilitys/spiderwebspin')
 
 const pterodactylability = require('../../entity/abilitys/pterodactylability')
+const eagleability = require('../../entity/abilitys/eagleability')
 const bluewhaletailslap = require('../../entity/abilitys/bluewhaletailslap')
 
 
@@ -346,6 +347,11 @@ function abilities(aobjids, player, entities, writer, which, aws_new) {
 				case 80: //pterodactyl grab abil 
 					new pterodactylability(entities, player, which)
 					break;
+				
+				case 47:
+					new eagleability(entities, player, which)
+					break;	
+				
 				case 78://thunderbird attack
 
 					new thunderabil(entities, player, aobjids, writer, which)
