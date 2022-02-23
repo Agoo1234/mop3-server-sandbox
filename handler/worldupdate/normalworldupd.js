@@ -91,7 +91,7 @@ function normalworldupd(aobjids, writer, QuadTree, entities, current_websockets,
                             if (!entities[player].isflying) {
                                 if (entities[player].whichbiome != 5 && entities[player].whichbiome != 6) {
                                     if (!(entities[player].secondaryType == 70 && entities[player].usingability)) {
-                                        if (entities[player].flags.includes(26)) {//check if animals is able to climb hills.
+                                        if (entities[player].flags.includes(26) ||  entities[player].arenaid != 0) {//check if animals is able to climb hills.
 
                                             let firsthill = new collidewith(entities, entities[player].id, newerentity[others].id)
 
