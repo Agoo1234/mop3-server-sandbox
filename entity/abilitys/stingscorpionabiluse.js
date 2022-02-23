@@ -26,6 +26,7 @@ function stinguse(entities, player, writer, which) {
         if (stingfirst <= Date.now() && !stingfirstuse) {
             entities[player].specType2 = 1
             entities[player].flags.push(21)
+            entities[player].flags.push(87)
             stingfirstuse = true
 
 
@@ -158,7 +159,9 @@ function stinguse(entities, player, writer, which) {
             entities[player].usingability = false
 
             var delO = 21
+            var del1 = 87
             var tmp = entities[player].flags.indexOf(delO); //remove from game arrays
+            var tmp = entities[player].flags.indexOf(del1);
             if (-1 != tmp) {
                 entities[player].flags.splice(tmp, 1);
             }
