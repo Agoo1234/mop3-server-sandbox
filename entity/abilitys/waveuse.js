@@ -1,4 +1,4 @@
-const utils1 = require("../../modules/util")
+const utils1 = require("../../modules/IMPmodules/util")
 const util = new utils1()
 const waveobj = require("../objects/abilitys/wave");
 function wave(entities, aobjids, oldangle, creator) {
