@@ -1,7 +1,7 @@
 function banips(ws) {
 
 
-	if (ws._socket.remoteAddress == '::ffff:' + 'xxxxx') { { ws.close(); } }//PUT REASON HERE.
+	if (ws._socket.remoteAddress == '::ffff:' + 'xxxxx') { { ws.close(); console.log("banned player "+ws._socket.remoteAddress)} }//PUT REASON HERE.
 
 
 }
