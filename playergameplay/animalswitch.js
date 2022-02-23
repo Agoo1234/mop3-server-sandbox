@@ -669,6 +669,7 @@ function animalswitcher(player) {
             player.bar.maxairbarpercentage = 350
 
             player.abilitys.button_w_mini = abilitiesswitcher(100);
+            player.abilitys.button_w = abilitiesswitcher(17);
             break
         //dif
 
