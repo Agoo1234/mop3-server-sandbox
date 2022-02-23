@@ -147,7 +147,6 @@ function abilities(aobjids, player, entities, writer, which, aws_new) {
 							new waveuse(entities, aobjids, self.angle + 180, player)
 							new waveuse(entities, aobjids, self.angle + 190, player)
 							new waveuse(entities, aobjids, self.angle + 170, player)
-							console.log(self.angle)
 							self.abilitys.button_w.abil_recharging = true
 							self.abilitys.button_w.abil_timestamp = Date.now() + self.abilitys.button_w.abil_time * 1000;
 							if (self.ws) {
@@ -156,6 +155,16 @@ function abilities(aobjids, player, entities, writer, which, aws_new) {
 						}
 					}
 					break
+				case 17: // mammoth
+				if (self.abilitys.button_w.abil_currentclick == 0) {
+					new snowballuse(aobjids, self.angle, entities, player, 19)
+					self.abilitys.button_w.abil_recharging = true
+					self.abilitys.button_w.abil_timestamp = Date.now() + self.abilitys.button_w.abil_time * 1000;
+					if (self.ws) {
+						self.ws.send(writer.abilitytimer(self.abilitys, which))
+					}
+				}
+				break	
 				case 63://sea spec
 					if (self.abilitys.button_w.abil_currentclick == 0) {
 						new seaspecuse(aobjids, entities, player)
@@ -218,10 +227,10 @@ function abilities(aobjids, player, entities, writer, which, aws_new) {
 						if (self.abilitys.button_w.abil_currentclick == 0) {
 							new yetitransform(aobjids, entities, player)
 							if(self.species == 3) {
-								new snowballuse(aobjids, 0, entities, player, 19)
-								new snowballuse(aobjids, 90, entities, player, 19)
-								new snowballuse(aobjids, 180, entities, player, 19)
-								new snowballuse(aobjids, 270, entities, player, 19)
+								new snowballuse(aobjids, self.angle, entities, player, 19)
+								new snowballuse(aobjids, self.angle + 90, entities, player, 19)
+								new snowballuse(aobjids, self.angle + 180, entities, player, 19)
+								new snowballuse(aobjids, self.angle + 270, entities, player, 19)
 							}
 							self.abilitys.button_w.abil_active = false
 							self.abilitys.button_w.abil_recharging = true
