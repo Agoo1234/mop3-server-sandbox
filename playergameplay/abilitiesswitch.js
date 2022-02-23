@@ -1,5 +1,4 @@
 const game1 = require("../game");
-const player = require("../entity/objects/objects/player");
 
 const game = new game1()
 function abilitiesswitcher(ability) {
@@ -50,6 +49,21 @@ function abilitiesswitcher(ability) {
                 abil_timestamptouch: Date.now(),
                 abil_timestamp: Date.now(),
                 abil_noflags: [20, 9, 11, 12],
+                abil_bardivideusable: 1,
+            }
+            break
+
+        case 28: // orca wave
+            button = {
+                abil_currentclick: 0,
+                abil_Type: 28,
+                abil_usable: true,
+                abil_recharging: false,
+                abil_possible: true,
+                abil_active: false,
+                abil_time: 6.5,
+                abil_timestamp: Date.now(),
+                abil_noflags: [],
                 abil_bardivideusable: 1,
             }
             break
@@ -373,7 +387,6 @@ function abilitiesswitcher(ability) {
 
             break
     }
-    if(player.infability == true){abil_time=0.1}
     return button
 }
 abilitiesswitcher.prototype = {}
