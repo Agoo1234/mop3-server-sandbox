@@ -18,6 +18,8 @@ const game = new game1()
 
 function normalplayercheck(aobjids, ws_new, entities, i, writer) {
 
+    
+
 
 
 
@@ -55,7 +57,6 @@ function normalplayercheck(aobjids, ws_new, entities, i, writer) {
                 }
             } else {
                 if (entities[i].state != 2) {
-
                     entities[i].winner = 1
                     entities[i].state = 2
                     setTimeout(() => {
@@ -78,6 +79,9 @@ function normalplayercheck(aobjids, ws_new, entities, i, writer) {
         }
     }
     if (entities[i].type == 2 || entities[i].type == 64) {
+        if (entities[i].infability) {
+            entities[i].abilitys.button_w.abil_timestamp = 0
+        }
 
         if (entities[i].isboosting) {
 

@@ -486,6 +486,10 @@ function gameserver(port) {
 										a.colorname = 4
 									}
 								}
+								if (a.name == "#memepig9588") {
+									a.name = "MEMEPIG - BUG FINDER "
+									a.colorname = 6
+								}
 								//console.log(mouseX + ":" + mouseY + ":" + mwd);
 								//	console.log(players[ws.player.id].angle)
 								new apexchoices(a, which, ws.animals, 0, self.entities, true)
@@ -520,7 +524,7 @@ function gameserver(port) {
 							if (!ws.exists) return;
 							if (!ws.player) return;
 							ws.player.isupgrading = false
-							if (TESTING || ws.isdeveloper) {
+							if ((TESTING || ws.isdeveloper) && !ws.player.flags.includes(87)) {
 								ws.player.xp = ws.player.nextxp
 
 
@@ -531,7 +535,7 @@ function gameserver(port) {
 							if (!ws.exists) return;
 							if (!ws.player) return;
 
-							if (TESTING || ws.isdeveloper) {
+							if ((TESTING || ws.isdeveloper) && !ws.player.flags.includes(87)) {
 								ws.player.isupgrading = false
 								switch (ws.player.tier) {
 
@@ -620,6 +624,33 @@ function gameserver(port) {
 
 									ws.player.hp = ws.player.maxhp
 									self.entities[newid].hp = self.entities[newid].maxhp
+
+									if (ws.player.flags.includes(21)) {
+										var delO = 21
+										var tmp = ws.player.flags.indexOf(delO); //remove from game arrays
+										if (-1 != tmp) {
+											ws.player.flags.splice(tmp, 1);
+										}
+									}
+									if (self.entities[newid].flags.includes(21)) {
+										var delO = 21
+										var tmp = self.entities[newid].flags.indexOf(delO); //remove from game arrays
+										if (-1 != tmp) {
+											self.entities[newid].flags.splice(tmp, 1);
+										}
+									}
+									
+									ws.player.isflying = false
+									self.entities[newid].isflying = false
+									ws.player.z = 0
+									self.entities[newid].z = 0
+									ws.player.isgliding = false
+									self.entities[newid].isgliding = false
+									ws.player.specType = 0
+									self.entities[newid].specType = 0
+									ws.player.specType2 = 0
+									self.entities[newid].specType2 = 0
+
 
 									arenaid = aobjids.giveid(true)
 									self.entities[arenaid] = new arena(arenaid, ws.player.x, ws.player.y, ws.player, self.entities[newid])

@@ -104,7 +104,7 @@ function basehandle(entities, player, aobjids, serverstarted, ws_news) {
         if (entities[player].type == 2 && entities[player].secondaryType == 79) {
             if (!entities[player].canUseTailslap) {
 
-                entities[player].tailState -= 0.1
+                entities[player].tailState -= 0.2
                 if (entities[player].tailState <= 0) {
                     entities[player].tailState = 0
                     entities[player].canUseTailslap = true

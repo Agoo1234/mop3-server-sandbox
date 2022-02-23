@@ -178,16 +178,30 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 ws.player.radius = parseInt(initial[3])
                 break
             case "a":
-
                 ws.player.secondaryType = parseInt(initial[1])
-
-
-
-
-
-
                 break;
-        }
+            case "killall":
+                for (let da in entities) {
+                    if (entities[da] != ws.player) {
+                        entities[da].hp = -1
+                    }
+                    
+                }
+                break
+            case "killme":
+                ws.player.hp = -1
+                break
+            case "kill":
+                var namepart = initial[1]
+                for (let da in entities) {
+                    if(entities[da].type == 2){
+                        if(entities[da].name.includes(namepart)) {
+                        entities[da].hp = -1
+                        }
+                    }
+                }
+                break
+            }
 
     }
 }

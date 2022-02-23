@@ -1,10 +1,11 @@
-- add thunderbid ability to falcon (modified to be like falcons though)
-- add 1v1 with other players
 - add food spawn in
-- fix sleigh issue
-- try to get infability to work
 - transfer godmode and zoom when upgrading
-- toggle bots command
-- kill all and kill me commands
 - add former animal tiers/work on hierarchy
 - update abilities
+- eagle abil
+- add files (txt or md) to guide on things like:
+    - commands (already there)
+    - how to add new animals, tiers, or abilities
+    - how to add new biome
+    - all the flags in the game
+    - what all the unicode8  things do (reader/writer)

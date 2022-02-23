@@ -7,6 +7,7 @@ const checkplayer2 = require("../../handler/worldupdate/check/2playercheck")
 const death = require("../../handler/deathhandle")
 const fireuse = require('../../entity/abilitys/fire/fireballuse')
 const dinomonsterkick = require('../../entity/abilitys/dinomonsterkick');
+const eaglegrab = require('../../entity/objects/abilitys/eaglegrab')
 
 const game1 = require('../../game');
 const game = new game1()
@@ -82,9 +83,7 @@ function collisions(entities, i, j, aobjids) {
                                     }
                                 }
                             }
-
                         }
-
                     }
                 }
                 if (entity_1.type == 2 && entity_2.type == 2) {
@@ -423,7 +422,7 @@ function collisions(entities, i, j, aobjids) {
 
                                     if (distanceplay <= entity_2.radius + entity_1.radius) {
 
-                                        if (entity_1.timerstunned <= Date.now()) {
+                                        if (entity_1.timerstunned <= Date.now() && entity_1.arenaid == 0) {
 
                                             entity_1.hp -= 40
                                             entity_1.timerstunned = Date.now() + 2000;
@@ -444,7 +443,7 @@ function collisions(entities, i, j, aobjids) {
 
                                     if (distanceplay <= entity_2.radius + entity_1.radius) {
                                         if (entity_1.type == 2) {
-                                            if (entity_1.timerstunned <= Date.now()) {
+                                            if (entity_1.timerstunned <= Date.now() && entity_1.arenaid == 0) {
 
                                                 entity_1.hp -= 25
                                                 entity_1.timerstunned = Date.now() + 2000;
@@ -477,7 +476,7 @@ function collisions(entities, i, j, aobjids) {
                             if (entity_2.type == 14 && entity_2.secondaryType == 3) {
                                 if (entity_2.spawnedby2 != entity_1.id) {
 
-                                    if (entity_1.timerstunned <= Date.now()) {
+                                    if (entity_1.timerstunned <= Date.now() && entity_1.arenaid == 0) {
 
                                         if (distanceplay <= entity_2.radius + entity_1.radius) {
                                             entity_1.hp -= entity_2.damage
@@ -622,7 +621,7 @@ function collisions(entities, i, j, aobjids) {
 
 
                             if (entity_2.type == 3) {
-                                if (!entity_1.flags.includes(26)) {
+                                if (!entity_1.flags.includes(26) || entity_1.arenaid != 0) {
                                     if (distanceplay <= entity_2.radius + entity_1.radius) {
                                         new collisiondynamic(entities, entity_1, entity_2, false, distanceplay)
                                     }
