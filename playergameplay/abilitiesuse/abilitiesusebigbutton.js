@@ -21,8 +21,9 @@ const stingscorpionabiluse = require('../../entity/abilitys/stingscorpionabiluse
 const spiderweb = require('../../entity/abilitys/spiderwebspin')
 
 const pterodactylability = require('../../entity/abilitys/pterodactylability')
-const eagleability = require('../../entity/abilitys/eagleability')
+const eagleability = require('../../entity/abilitys/eagle/eagleability')
 const bluewhaletailslap = require('../../entity/abilitys/bluewhaletailslap')
+const waveuse = require('../../entity/abilitys/waveuse')
 
 
 
@@ -128,7 +129,7 @@ function abilities(aobjids, player, entities, writer, which, aws_new) {
 					break;
 				case 79:
 					if (self.abilitys.button_w.abil_currentclick == 1 && !self.abilitys.button_w.abil_active) {
-						new stingscorpionabiluse(entities, player, writer, which)
+						try {new stingscorpionabiluse(entities, player, writer, which)} catch(err) {console.log(err)}
 					}
 
 					break;
@@ -138,6 +139,21 @@ function abilities(aobjids, player, entities, writer, which, aws_new) {
 
 						new spiderweb(aobjids, entities, pos, player, writer, which)
 
+					}
+					break
+				case 28: // killer whale
+					if (self.abilitys.button_w.abil_currentclick == 0) {
+						if (self.abilitys.button_w.abil_timestamp < Date.now() && self.abilitys.button_w.abil_timestamp != 0) {
+							new waveuse(entities, aobjids, self.angle + 180, player)
+							new waveuse(entities, aobjids, self.angle + 190, player)
+							new waveuse(entities, aobjids, self.angle + 170, player)
+							console.log(self.angle)
+							self.abilitys.button_w.abil_recharging = true
+							self.abilitys.button_w.abil_timestamp = Date.now() + self.abilitys.button_w.abil_time * 1000;
+							if (self.ws) {
+								self.ws.send(writer.abilitytimer(self.abilitys, which))
+							}
+						}
 					}
 					break
 				case 63://sea spec
