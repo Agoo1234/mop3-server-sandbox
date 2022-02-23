@@ -58,7 +58,7 @@ function animalswitcher(player) {
                     break;
             }
             break
-        case 46:
+        case 46: // black dragon
             switch (player.species) {
                 case 0:
                     player.specType2 = 0;
@@ -260,7 +260,7 @@ function animalswitcher(player) {
             player.bar.maxairbarpercentage = 80
             break;
         //Monstersend
-        case 85:
+        case 85: // santa
 
             player.tier = 14
             player.bar.normalbar = 0
@@ -583,12 +583,32 @@ function animalswitcher(player) {
                 lavaspeed: 3.5,
                 flyspeed: 4.75
             }
+            player.flags.push(26)
             player.bar.maxairbarpercentage = 100
             player.abilitys.button_w = abilitiesswitcher(47);
             player.abilitys.button_w_mini = abilitiesswitcher(100);
             break
+        case 26: // killer whale / orca
+            player.tier = 13
+            player.bar.normalbar = 0
+            player.whichbiome = 1
+            player.nextxp = 1000000;
 
-        case 49:
+            player.baserad = 40
+            player.addrad = 0.35
+            player.lessrad = 0.2
+
+            player.speeds = {
+                landspeed: 2,
+                oceanspeed: 4.4,
+                arcticspeed: 2,
+                lavaspeed: 2,
+            }
+            player.bar.maxairbarpercentage = 260
+            player.abilitys.button_w = abilitiesswitcher(28);
+            player.abilitys.button_w_mini = abilitiesswitcher(100);
+            break
+        case 49: // blue whale
             player.tier = 13
             player.bar.normalbar = 0
             player.whichbiome = 1
@@ -609,7 +629,7 @@ function animalswitcher(player) {
             player.abilitys.button_w = abilitiesswitcher(32);
             player.abilitys.button_w_mini = abilitiesswitcher(100);
             break
-        case 65:
+        case 65: // falcon
             player.tier = 13
             player.bar.normalbar = 0
             player.whichbiome = 0
@@ -629,9 +649,10 @@ function animalswitcher(player) {
             player.bar.maxairbarpercentage = 50
             player.abilitys.button_w = abilitiesswitcher(57);
             player.abilitys.button_w_mini = abilitiesswitcher(100);
+            player.flags.push(26)
             break
 
-        case 43:
+        case 43: // mammoth
             player.tier = 13
             player.bar.normalbar = 0
             player.whichbiome = 0
