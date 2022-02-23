@@ -67,6 +67,20 @@ function abilitiesswitcher(ability) {
                 abil_bardivideusable: 1,
             }
             break
+        case 17: // mammoth
+            button = {
+                abil_currentclick: 0,
+                abil_Type: 17,
+                abil_usable: true,
+                abil_recharging: false,
+                abil_possible: true,
+                abil_active: false,
+                abil_time: 3.5,
+                abil_timestamp: Date.now(),
+                abil_noflags: [],
+                abil_bardivideusable: 1,
+            }
+            break
         case 253://fly high
             button = {
 
