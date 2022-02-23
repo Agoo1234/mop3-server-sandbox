@@ -585,7 +585,8 @@ function animalswitcher(player) {
             }
             player.flags.push(26)
             player.bar.maxairbarpercentage = 100
-            player.abilitys.button_w = abilitiesswitcher(47);
+            //player.abilitys.button_w = abilitiesswitcher(47);
+            player.abilitys.button_w = abilitiesswitcher(80);
             player.abilitys.button_w_mini = abilitiesswitcher(100);
             break
         case 26: // killer whale / orca
