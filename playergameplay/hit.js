@@ -52,6 +52,7 @@ function tailbite(entities, player1, player2) {
                 }
 
 
+
                 player1.pos.x = a.x
 
                 player1.pos.y = a.y
