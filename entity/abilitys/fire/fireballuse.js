@@ -29,6 +29,12 @@ function fireusecreator(aobjids, moreangle, entities, creator, spec) {
                 if (entities[creator].tier == 14) {
                     entities[objids].radius = 10
                 }
+                if(entities[creator].tier == 13) {
+                    entities[objids].radius = 9.75
+                }
+                if(entities[creator].tier == 12) {
+                    entities[objids].radius = 9.5
+                }
                 new firemove(entities, objids)
             } else {
                 var objids = aobjids.giveid(true);

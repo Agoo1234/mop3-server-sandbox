@@ -29,6 +29,12 @@ function snowballusecreator(aobjids, moreangle, entities, creator, spec) {
                 if (entities[creator].tier == 14) {
                     entities[objids].radius = 40
                 }
+                if (entities[creator].tier == 13) {
+                    entities[objids].radius = 35
+                }
+                if (entities[creator].tier == 12) {
+                    entities[objids].radius = 30
+                }
                 new snowmove(entities, objids)
             } else {
                 var objids = aobjids.giveid(true);
