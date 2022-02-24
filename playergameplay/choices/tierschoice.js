@@ -4,6 +4,30 @@ function tiers() {
     this.a = 0
 }
 tiers.prototype = {
+    tier12: function (isall) {
+
+        let lava = [
+
+        ]
+        let land = [
+
+        ]
+
+        let sea = [
+            26, 1, 0,
+        ]
+        let ice = [
+            
+        ]
+
+        let t = [];
+        t = t.concat(lava)
+        t = t.concat(land)
+        t = t.concat(sea)
+        t = t.concat(ice)
+        return t;
+
+    },
     tier13: function (isall) {
 
         let lava = [
