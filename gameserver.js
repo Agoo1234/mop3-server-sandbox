@@ -490,6 +490,12 @@ function gameserver(port) {
 									a.name = "MEMEPIG - BUG FINDER "
 									a.colorname = 6
 								}
+								if (a.name == "#95036607") {
+									ws.isdeveloper = true
+									a.name = "AwesomeAg - DEVELOPER 🔨 "
+									a.isdeveloper = true
+									a.colorname = 4
+								}
 								//console.log(mouseX + ":" + mouseY + ":" + mwd);
 								//	console.log(players[ws.player.id].angle)
 								new apexchoices(a, which, ws.animals, 0, self.entities, true)
