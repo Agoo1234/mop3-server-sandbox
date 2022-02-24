@@ -1,16 +1,21 @@
 
 const tierload1 = require("./choices/tierschoice")
 const tierload = new tierload1()
+var tier12 = tierload.tier12(true)
 var tier13 = tierload.tier13(true)
 var tier14 = tierload.tier14(true)
 var tier15 = tierload.tier15(true)
 var tier16 = tierload.tier16(true)
 var bosstier = tierload.bosstier(true)
+var t12 = [];
 var t13 = [];
 var t14 = [];
 var t15 = [];
 var t16 = [];
 var tboss = []
+for (var i = 0; i < tier12.length / 3; i++) {
+    t12.push(tier12[i*3])
+}
 for (var i = 0; i < tier13.length / 3; i++) {
     t13.push(tier13[i * 3])
 }
@@ -144,6 +149,39 @@ function animalswitcher(player, writer, id) {
             if (!player.isbot) {
                 if (player.isplayer) {
                     player.playcamera = 1.75;
+                    for (var m in t14) {
+                        player.predators.push(t14[m])
+                        player.tailbite.push(t14[m])
+                    }
+                    for (var m in t15) {
+                        player.predators.push(t15[m])
+                        player.tailbite.push(t15[m])
+                    }
+                    for (var m in t16) {
+                        player.predators.push(t16[m])
+                        player.tailbite.push(t16[m])
+                    }
+                    for (var m in tboss) {
+
+                        player.predators.push(tboss[m])
+                    }
+                    player.zoomwidth = innerWidth / 1.6
+                    player.zoomheight = innerHeight / 1.6
+                }
+            }
+            break
+        case 12:
+            player.oldupxp = 250000
+            player.foods = [50, 51, 83, 82, 35, 37, 32, 48, 22, 24, 21]
+            player.angles.anglespeed = 30
+            if (!player.isbot) {
+                if (player.isplayer) {
+                    player.playcamera = 1.75;
+                    for (var m in t13) {
+                        player.predators.push(t13[m])
+                        player.tailbite.push(t13[m])
+                        
+                    }
                     for (var m in t14) {
                         player.predators.push(t14[m])
                         player.tailbite.push(t14[m])
