@@ -316,6 +316,12 @@ function collisions(entities, i, j, aobjids) {
 
 
                                         if (distanceplay <= entity_2.radius + entity_1.radius) {
+                                            entity_1.timerstunned = Date.now()+3000
+                                            let newposone = util.rotate(entity_1.x, entity_1.y, entity_1.x + 100, entity_1.y + 100, entity_2.angle)
+                                            let onenewx = entity_1.pos.x - newposone.x 
+                                            let onenewy = entity_1.pos.y - newposone.y
+                                            entity_1.pos.x += onenewx
+                                            entity_1.pos.y += onenewy
                                             let pos = util.rotate(entity_2.x, entity_2.y, entity_2.x - entity_1.speed, entity_2.y, entity_1.angle)
                                             if (entity_2.type == 2 && !entity_2.isdead && entity_2.isplayer && entity_2.arenaid == 0 || entity_2.type == 64) {
                                                 let newx = entity_2.pos.x - pos.x
