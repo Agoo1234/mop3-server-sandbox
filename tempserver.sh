@@ -1,5 +1,5 @@
 do
-	nohup node server &
+	node server &
 	sleep 15
 	sudo killall node
 
