@@ -297,7 +297,7 @@ function gameserver(port) {
 					ws.nameLen = 1
 					ws.name = ' '
 
-					ws.xp = 500000
+					ws.xp = 250000
 
 					ws.camx = util.randomNumber(0, game.load(0))
 					ws.camy = util.randomNumber(0, game.load(1))
@@ -355,7 +355,7 @@ function gameserver(port) {
 					ws.todelete = []
 
 
-					ws.animals = tierload.tier13(false)
+					ws.animals = tierload.tier12(false)
 
 					self.ws_new[ws.id] = ws
 					var p = setInterval(() => {
@@ -547,7 +547,7 @@ function gameserver(port) {
 
 									case 16:
 										ws.player.isupgrading = true
-										ws.player.animals = tierload.tier15(false);
+										ws.player.animals = tierload.tier15(ws.player.isdeveloper);
 										ws.player.xp = 10000000
 										ws.send(writer.choice(0, 0, ws.player.animals))
 										ws.player.choiceid = util.randomIntNumber(0, 999999999999)
@@ -555,7 +555,7 @@ function gameserver(port) {
 										break
 									case 15:
 										ws.player.isupgrading = true
-										ws.player.animals = tierload.tier14(false);
+										ws.player.animals = tierload.tier14(ws.player.isdeveloper);
 
 										ws.player.xp = 1000000
 										ws.send(writer.choice(0, 0, ws.player.animals))
@@ -564,8 +564,14 @@ function gameserver(port) {
 										break
 									case 14:
 										ws.player.isupgrading = true
-										ws.player.animals = tierload.tier13(false);
+										ws.player.animals = tierload.tier13(ws.player.isdeveloper);
 										ws.player.xp = 500000
+										ws.send(writer.choice(0, 0, ws.player.animals))
+										ws.player.choiceid = util.randomIntNumber(0, 999999999999)
+									case 13:
+										ws.player.isupgrading = true
+										ws.player.animals = tierload.tier12(ws.player.isdeveloper);
+										ws.player.xp = 250000
 										ws.send(writer.choice(0, 0, ws.player.animals))
 										ws.player.choiceid = util.randomIntNumber(0, 999999999999)
 
@@ -845,7 +851,7 @@ function gameserver(port) {
 						if (ws.player.isdead) {
 
 
-							ws.animals = tierload.tier13(false)
+							ws.animals = tierload.tier12(ws.player.isdeveloper)
 							//animal,biome,species,truebiome
 							ws.xp = ws.player.xp / 4
 							ws.player = null
@@ -853,8 +859,8 @@ function gameserver(port) {
 							if (spawnxp > 3000000000) {
 								spawnxp = 3000000000
 							}
-							if (ws.xp < 500000) {
-								ws.xp = 500000
+							if (ws.xp < 250000) {
+								ws.xp = 250000
 							}
 							ws.send(writer.death(1, spawnxp))
 							ws.send(writer.choice(5, 0, []))
