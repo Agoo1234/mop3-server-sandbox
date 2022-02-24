@@ -83,7 +83,7 @@ function player(ws, id, pos, name) {
     this.killerid = 0
     this.damage = 20
     this.cam = this.pos;
-    this.tier = 14
+    this.tier = 12
     this.rank = 0;
     this.holdboost = false;
     this.isabletoboost = true;
