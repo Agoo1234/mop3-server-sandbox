@@ -13,11 +13,10 @@ function abilities(aobjids, player, entities) {
                 
             }
         } 
-        else if (entities[player].bar.normalbar == 2) {
+        else if (entities[player].bar.normalbar == 2 && entities[player].secondaryType != 79) {
             if (entities[player].bar.normalbarpercentage > 6.0) {
                 new fireuse(aobjids, 0, entities, entities[player].id, entities[player].specType2)
                 entities[player].bar.normalbarpercentage -= 6.0
-                console.log(entities[player].bar.barpercentage)
             }
         }
         else {
