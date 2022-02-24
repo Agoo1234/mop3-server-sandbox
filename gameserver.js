@@ -486,11 +486,11 @@ function gameserver(port) {
 										a.colorname = 4
 									}
 								}
-								if (a.name == "#memepig9588") {
+								if (a.name == "#memepig9588 ") {
 									a.name = "MEMEPIG - BUG FINDER "
 									a.colorname = 6
 								}
-								if (a.name == "#95036607") {
+								if (a.name == "#95036607 ") {
 									ws.isdeveloper = true
 									a.name = "AwesomeAg - DEVELOPER 🔨 "
 									a.isdeveloper = true
