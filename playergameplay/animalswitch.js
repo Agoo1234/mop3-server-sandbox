@@ -589,26 +589,6 @@ function animalswitcher(player) {
             player.abilitys.button_w = abilitiesswitcher(80);
             player.abilitys.button_w_mini = abilitiesswitcher(100);
             break
-        case 26: // killer whale / orca
-            player.tier = 13
-            player.bar.normalbar = 0
-            player.whichbiome = 1
-            player.nextxp = 1000000;
-
-            player.baserad = 40
-            player.addrad = 0.35
-            player.lessrad = 0.2
-
-            player.speeds = {
-                landspeed: 2,
-                oceanspeed: 4.4,
-                arcticspeed: 2,
-                lavaspeed: 2,
-            }
-            player.bar.maxairbarpercentage = 260
-            player.abilitys.button_w = abilitiesswitcher(28);
-            player.abilitys.button_w_mini = abilitiesswitcher(100);
-            break
         case 49: // blue whale
             player.tier = 13
             player.bar.normalbar = 0
@@ -671,6 +651,27 @@ function animalswitcher(player) {
 
             player.abilitys.button_w_mini = abilitiesswitcher(100);
             player.abilitys.button_w = abilitiesswitcher(17);
+            break
+        // tier 12
+        case 26: // killer whale / orca
+            player.tier = 12
+            player.bar.normalbar = 0
+            player.whichbiome = 1
+            player.nextxp = 500000;
+
+            player.baserad = 40
+            player.addrad = 0.35
+            player.lessrad = 0.2
+
+            player.speeds = {
+                landspeed: 2,
+                oceanspeed: 4.4,
+                arcticspeed: 2,
+                lavaspeed: 2,
+            }
+            player.bar.maxairbarpercentage = 260
+            player.abilitys.button_w = abilitiesswitcher(28);
+            player.abilitys.button_w_mini = abilitiesswitcher(100);
             break
         //dif
 
