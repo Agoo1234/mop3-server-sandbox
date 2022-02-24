@@ -75,7 +75,7 @@ tiers.prototype = {
         if (util.isnumbcorrectbetween(0, 1, util.randomNumber(0, 2)) || isall) { // santa
             land.push(85, 0, 0)
         }
-        if(util.isnumbcorrectbetween(0, 5, util.randomNumber(0, 6)) || isall) { // aqua yeti
+        if(util.isnumbcorrectbetween(0, 2, util.randomNumber(0, 7)) || isall) { // aqua yeti
             ice.push(32, 2, 3)
         }
         let t = [];
