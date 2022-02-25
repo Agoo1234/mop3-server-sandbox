@@ -527,6 +527,27 @@ function collisions(entities, i, j, aobjids) {
                                 }
                             }
 
+                            if (entity_2.type == 14 && entity_2.secondaryType == 82) {
+                                if (entity_1.timerstunned <= Date.now()) {
+                                    if (entity_2.spawnedby2 != entity_1.id) {
+                                        if (distanceplay <= entity_2.radius + entity_1.radius) {
+                                            entity_1.hp -= 15
+                                            entity_1.timerstunned = Date.now() + 3000;
+
+                                            new death(entities, entity_1.id, entity_2, entity_2.spawnedby2)
+                                            let slope = (entity_1.pos.y - entity_2.y) / (entity_1.pos.x - entity_2.x)
+                                            let alpha = Math.atan(slope)
+                                            let theta = 90 - alpha
+                                            let newposone = util.rotate(entity_1.x, entity_1.y, entity_1.x + 100, entity_1.y + 100, theta)
+                                            let onenewx = entity_1.pos.x - newposone.x 
+                                            let onenewy = entity_1.pos.y - newposone.y
+                                            entity_1.pos.x += onenewx
+                                            entity_1.pos.y += onenewy
+                                        }
+                                    }
+                                }
+                            }
+
                             if (entity_2.type == 14 && entity_2.secondaryType == 74) {
 
                                 if (entity_2.spawnedby2 != entity_1.id) {
