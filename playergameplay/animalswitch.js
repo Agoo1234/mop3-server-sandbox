@@ -673,6 +673,26 @@ function animalswitcher(player) {
             player.abilitys.button_w = abilitiesswitcher(28);
             player.abilitys.button_w_mini = abilitiesswitcher(100);
             break
+        case 13: // killer whale / orca
+            player.tier = 12
+            player.bar.normalbar = 0
+            player.whichbiome = 0
+            player.nextxp = 500000;
+
+            player.baserad = 37
+            player.addrad = 0.4
+            player.lessrad = 0.15
+
+            player.speeds = {
+                landspeed: 4,
+                oceanspeed: 4,
+                arcticspeed: 4,
+                lavaspeed: 4,
+            }
+            player.bar.maxairbarpercentage = 350
+            player.abilitys.button_w = abilitiesswitcher(82);
+            player.abilitys.button_w_mini = abilitiesswitcher(100);
+            break
         //dif
 
         default:

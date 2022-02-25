@@ -10,7 +10,7 @@ tiers.prototype = {
 
         ]
         let land = [
-
+            13, 0, 0,
         ]
 
         let sea = [
@@ -43,7 +43,6 @@ tiers.prototype = {
 
         let sea = [
             49, 1, 0,
-            26, 1, 0,
         ]
         let ice = [
             43, 2, 0,
