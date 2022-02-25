@@ -294,6 +294,21 @@ function abilitiesswitcher(ability) {
                 abil_bardivideusable: 1,
             }
             break
+        case 82: // hippo groan
+            button = {
+
+                abil_currentclick: 0,
+                abil_Type: 82,
+                abil_usable: true,
+                abil_recharging: false,
+                abil_possible: true,
+                abil_active: false,
+                abil_time: 7,
+                abil_timestamp: Date.now(),
+                abil_noflags: [20, 19],
+                abil_bardivideusable: 1,
+            }
+            break
         case 57://falcon attack
             button = {
 
