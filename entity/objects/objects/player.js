@@ -91,6 +91,8 @@ function player(ws, id, pos, name) {
     this.whenboost = true;
     this.nowater = false;
     this.isdeveloper = false
+    this.isyoutuber = false;
+    this.istempdev = false;
     this.godmode = false
 
     this.canmove = true

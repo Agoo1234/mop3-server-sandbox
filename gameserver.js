@@ -8,6 +8,7 @@ function gameserver(port) {
 
 	const ipban = require("./banips.js")
 	const devsip = require("./devip.js")
+	const youtubeip = require("./youtubeip.js")
 
 	const writer1 = require("./modules/IMPmodules/writer.js");
 	const writer = new writer1();
@@ -247,6 +248,7 @@ function gameserver(port) {
 					if (ws.correctstring + " " != ws.newstring) { ws.trys; ws.send(writer.codecheck(ws.correctstring)); return };
 					ws.isdeveloper = false
 					new devsip(ws)
+					new youtubeip(ws)
 
 					if (!serverstarted || !ws.isdeveloper && playersNum >= game.load(3)) {
 						if (playersNum > game.load(3)) {
