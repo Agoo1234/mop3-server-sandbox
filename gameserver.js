@@ -76,7 +76,6 @@ function gameserver(port) {
 	ARENAQUEUE = []// arena queue
 
 
-
 	const wss = new WebSocket.Server({
 		port: port
 	});
@@ -93,6 +92,7 @@ function gameserver(port) {
 
 	const TESTING = true
 	const serverVer = 99;
+
 
 	const MAXBOTS = game.load(4)
 	var serverstarted = false
@@ -581,6 +581,11 @@ function gameserver(port) {
 										break
 								}
 
+							}
+							break
+						case 69:
+							if(!ARENAQUEUE.contains(ws.player.id)) {
+								ARENAQUEUE.push(ws.player.id)
 							}
 							break
 						case 5:
