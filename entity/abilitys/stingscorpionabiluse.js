@@ -39,11 +39,12 @@ function stinguse(entities, player, writer, which) {
                     clearInterval(stingnew)
                     if (entities[mystingentity.biteid]) {
                         entities[mystingentity.biteid].isgrabbed = false
-                        let newstingpos = util.rotate(entities[player].pos.x, entities[player].pos.y, entities[player].pos.x - (entities[player].radius * 1.25),
+
+                        try {let newstingpos = util.rotate(entities[player].pos.x, entities[player].pos.y, entities[player].pos.x - (entities[player].radius * 1.25),
                             entities[player].pos.y, entities[player].angle)
                         mystingentity.x = newstingpos.x
                         mystingentity.y = newstingpos.y
-                        this.pushnearplayers(entities, player, newstingpos)
+                        this.pushnearplayers(entities, player, newstingpos) } catch(err) {console.log(err)}
                     }
                     return;
                 }

@@ -6,8 +6,8 @@ function deathhandle(entities, player2, player1) {
         if (entities[player2].hp < 0.01) {
 
             entities[player2].killerid = entities[player1].id
-            entities[player1].lasthp = entities[player1].maxhp
-            entities[player1].hp += entities[player1].maxhp / 6
+            entities[player1].lasthp = entities[player1].maxhp 
+            try {entities[player1].hp += entities[player1].maxhp / 6} catch(err) {console.log(error)}
             entities[player1].kills++
             entities[player1].xp += entities[player2].xp / 1.5
             entities[player1].barpercentage = 100
