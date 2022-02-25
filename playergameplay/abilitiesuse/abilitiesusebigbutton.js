@@ -15,6 +15,7 @@ const snowballuse = require('../../entity/abilitys/snowball/snowballuse')
 
 const thunderabil = require('../../entity/abilitys/thunderabil')
 const falconabil = require('../../entity/abilitys/falconabil')
+const hippogroan = require('../../entity/abilitys/hippogroanuse')
 
 const seaspecuse = require('../../entity/abilitys/seaspecuse')
 const stingscorpionabiluse = require('../../entity/abilitys/stingscorpionabiluse')
@@ -232,6 +233,43 @@ function abilities(aobjids, player, entities, writer, which, aws_new) {
 								new snowballuse(aobjids, self.angle + 180, entities, player, 19)
 								new snowballuse(aobjids, self.angle + 270, entities, player, 19)
 							}
+							self.abilitys.button_w.abil_active = false
+							self.abilitys.button_w.abil_recharging = true
+							self.specType = 1
+							self.transforming = false
+							//eventgamehandler.sendabilityrechage(entities[player], which)
+							self.abilitys.button_w.abil_timestamp = Date.now() + self.abilitys.button_w.abil_time * 1000;
+							if (self.ws) {
+								self.ws.send(writer.abilitytimer(self.abilitys, which))
+							}
+							setTimeout(() => {
+								if (entities[player]) {
+
+									self.usingability = false
+									self.isabletoboost = true
+									self.candive = true
+									self.specType = 0
+								}
+							}, 1500);
+
+						}
+					}
+					break;
+				case 82:// hippo groan
+					if (!self.usingability && !self.abilitys.button_w.abil_recharging) {
+						if (self.abilitys.button_w.abil_currentclick == 1) {
+							self.usingability = true
+							self.isabletoboost = true
+							self.candive = true
+							self.abilitys.button_w.abil_active = true
+						}
+					} else {
+						if (self.abilitys.button_w.abil_currentclick == 0) {
+							oldspeed = self.speed
+							self.speed /= 5
+							new hippogroan(aobjids, entities, player)
+							self.speed = oldspeed
+							self.chat("GROOAAN! ", aws_new, writer)
 							self.abilitys.button_w.abil_active = false
 							self.abilitys.button_w.abil_recharging = true
 							self.specType = 1
