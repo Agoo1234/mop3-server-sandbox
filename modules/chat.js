@@ -48,8 +48,13 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
         if (msgData == 'invis:off ') { ws.player.isinvisible = false ; makeMsgNone()} // invis
         if (msgData == 'invis:on ') { ws.player.isinvisible = true ; makeMsgNone()} // invis
         if (msgData == 's:1 ') { ws.player.infability = true ; makeMsgNone()} //infability 
-        if (msgData == 's:0 ') { ws.player.infability = false ; makeMsgNone()} //infability
+        if (msgData == 's:0 ') { ws.player.infability = false ; makeMsgNone()} //infability)
         if (msgData == 'stopserver ') { makeMsgNone(); process.exit(1); ; } // stop server
+        if (msgData == 'godmode ' || msgData == 'gm ') {
+            if(ws.player.godmode) ws.player.godmode = false
+            else ws.player.godmode = true;
+            makeMsgNone()
+        }
         if (msgData == 'godmode:on ' || msgData == 'gm:on ') { //godmode on
             ws.player.godmode = true
             makeMsgNone()
