@@ -183,12 +183,16 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
             case "killall":
                 for (let da in entities) {
                     if (entities[da] != ws.player) {
+                        entities[da].invincible = false
+                        entities[da].godmode = false
                         entities[da].hp = -1
                     }
                     
                 }
                 break
             case "killme":
+                ws.player.invincible = false
+                ws.player.godmode = false
                 ws.player.hp = -1
                 break
             case "kill":
@@ -196,6 +200,8 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 for (let da in entities) {
                     if(entities[da].type == 2){
                         if(entities[da].name.includes(namepart)) {
+                        entities[da].invincible = false
+                        entities[da].godmode = false
                         entities[da].hp = -1
                         }
                     }
