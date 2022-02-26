@@ -223,12 +223,13 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 break;
             case "killall":
                 for (let da in entities) {
-                    if (entities[da] != ws.player) {
-                        entities[da].invincible = false
-                        entities[da].godmode = false
-                        entities[da].hp = -1
+                    if(entities[da].player) {
+                        if (entities[da] != ws.player) {
+                            entities[da].invincible = false
+                            entities[da].godmode = false
+                            entities[da].hp = -1
+                        }
                     }
-                    
                 }
                 makeMsgNone()
                 break
@@ -251,6 +252,16 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 }
                 makeMsgNone()
                 break
+            case "tempdev":
+                tempname = initial[1]
+                for (let da in entities) {
+                    if (entities[da].player && entities[da].type == 2) {
+                        if (entities[da].name.includes(tempname)) {
+                            entities[da].istempdev = true
+                        }
+                    }
+                }
+                break;
             }
 
     }
