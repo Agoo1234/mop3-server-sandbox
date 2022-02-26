@@ -639,6 +639,10 @@ function animalswitcher(player) {
             player.whichbiome = 0
             player.nextxp = 1000000;
 
+            player.baserad = 47.5
+            player.addrad = 0.2
+            player.lessrad = 0.2
+
 
             player.speeds = {
                 landspeed: 4.2,
@@ -673,14 +677,14 @@ function animalswitcher(player) {
             player.abilitys.button_w = abilitiesswitcher(28);
             player.abilitys.button_w_mini = abilitiesswitcher(100);
             break
-        case 13: // killer whale / orca
+        case 13: // hippo
             player.tier = 12
             player.bar.normalbar = 0
             player.whichbiome = 0
             player.nextxp = 500000;
 
             player.baserad = 37
-            player.addrad = 0.4
+            player.addrad = 0.25
             player.lessrad = 0.15
 
             player.speeds = {
