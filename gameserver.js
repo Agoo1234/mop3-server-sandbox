@@ -615,11 +615,11 @@ function gameserver(port) {
 							}
 							break
 						case 69:
-								if(ARENAQUEUE.length == 0 && !ARENAQUEUE.includes(ws.player.id)) {
+								if(ARENAQUEUE.length == 0 && !ARENAQUEUE.includes(ws.player.id) && ws.player.arenaid == 0 && ws.player.arenaid == 0) {
 									ARENAQUEUE.push(ws.player.id)
 								}
 
-								else if (ARENAQUEUE.length > 0 && !ARENAQUEUE.includes(ws.player.id)) {
+								else if (ARENAQUEUE.length > 0 && !ARENAQUEUE.includes(ws.player.id) && ws.player.arenaid == 0 && ws.player.arenaid == 0) {
 									newid = ARENAQUEUE[0]
 									ARENAQUEUE.shift();
 
