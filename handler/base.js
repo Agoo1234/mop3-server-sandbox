@@ -96,6 +96,7 @@ function basehandle(entities, player, aobjids, serverstarted, ws_news) {
                         entities[player].transparancy = 100
                     }
                 }
+                console.log(entities[player].transparancy)
 
             }
         } else {
@@ -300,6 +301,11 @@ function basehandle(entities, player, aobjids, serverstarted, ws_news) {
             if (entities[player].isdiving) {
                 entities[player].isdiving = false
 
+            }
+            if (entities[player].transparancy > 0) {
+                entities[player].transparancy -= 100
+            } else {
+                entities[player].transparancy = 0
             }
         }
         if (entities[player].isgrabbed) {
