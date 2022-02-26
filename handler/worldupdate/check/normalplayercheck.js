@@ -389,8 +389,9 @@ function normalplayercheck(aobjids, ws_new, entities, i, writer) {
                     } else if (entities[i].biome == 3) {
                         if (entities[i].whichbiome != 5 && entities[i].whichbiome != 6 && entities[i].whichbiome != 3) {
 
-
+                            if(!entities[i].isgrabbed){
                             entities[i].timerburned = Date.now() + 3000;
+                            }
 
                         }
                         entities[i].speed = entities[i].speeds.lavaspeed
