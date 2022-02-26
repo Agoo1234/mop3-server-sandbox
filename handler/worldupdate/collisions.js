@@ -512,7 +512,7 @@ function collisions(entities, i, j, aobjids) {
                             }
                             if (entity_2.type == 14 && entity_2.secondaryType == 11) {
                                 if (entity_1.timerfrozen <= Date.now()) {
-                                    if (entity_2.spawnedby2 != entity_1.id) {
+                                    if (entity_2.spawnedby2 != entity_1.id && entity_1.arenaid == 0) {
 
 
                                         if (distanceplay <= entity_2.radius + entity_1.radius) {
