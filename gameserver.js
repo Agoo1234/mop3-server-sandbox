@@ -219,7 +219,7 @@ function gameserver(port) {
 				}
 				if (sum >= game.load(6)) {
 					ws.close();
-					console.log("closed game.load 6");
+					console.log("closed game. load 6 (max players with ip reached)");
 					break;
 				}
 
@@ -273,6 +273,20 @@ function gameserver(port) {
 					if (!ws.isdeveloper) ips.push(ws._socket.remoteAddress)
 
 					console.log("Player connected : ", ws._socket.remoteAddress, "isdev: ", ws.isdeveloper);
+					let biggestxp = 0
+					let biggestid = ws.spectatingon;
+					entities = self.entities
+					for (let da in entities) {
+						if (entities[da].type == 2) {
+							if(entities[da].xp > biggestxp) {
+								biggestxp = entities[da].xp
+								biggestid = entities[da].id
+							} 
+						}
+					}
+					ws.spectatingon = biggestid
+
+					
 					
 
 					let randomentities = []
@@ -284,8 +298,6 @@ function gameserver(port) {
 							randomentities.push(self.entities[i].id)
 						}
 					}
-					var randomtest = Math.floor(Math.random() * randomentities.length);
-					ws.spectatingon = randomentities[randomtest]
 					ws.askedchoice = false
 
 					ws.declareddisconnection = false
@@ -537,6 +549,20 @@ function gameserver(port) {
 
 
 							}
+							break
+						case 56:
+							let biggestxp = 0
+							let biggestid = ws.spectatingon;
+							entities = self.entities
+							for (let da in entities) {
+								if (entities[da].type == 2) {
+									if(entities[da].xp > biggestxp) {
+										biggestxp = entities[da].xp
+										biggestid = entities[da].id
+									} 
+								}
+							}
+							ws.spectatingon = biggestid
 							break
 						case 27:
 
