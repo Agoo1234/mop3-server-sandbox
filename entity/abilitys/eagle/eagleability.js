@@ -44,7 +44,7 @@ function eagleability(entities, player, which) {
     ) {
         entities[player].abilitys.button_w.abil_active = true
         entities[player].usingability = true
-        entities[player].flags.push(888)
+
         let wheninsky = Date.now() + 2000
         let enteredinsky = false
         entities[player].isabletoboost = false
@@ -68,18 +68,6 @@ function eagleability(entities, player, which) {
                     entities[player].isgliding = true
                     godown(entities, player, which)
 
-                }
-
-                if (entities[player].flags.includes(888)) {
-                    var del0 = 888
-                    var tmp = entities[player].flags.indexOf(del0)
-                    if (-1 != tmp) {
-                        entities[player].flags.splice(tmp, 1)
-                    }
-                }
-
-                if(!entities[player].flags.includes(889)) {
-                    entities[player].flags.push(888)
                 }
             }
             if (!enteredinsky) {
@@ -111,7 +99,8 @@ function eagleability(entities, player, which) {
         }, 10);
     }
     //start grab
-    if (entities[player].flags.includes(888)) {
+    if (entities[player].abilitys.button_w.abil_currentclick == 1 && entities[player].abilitys.button_w.abil_active
+        && entities[player].z == 50 && entities[player].specType == 2 && entities[player].specType2 == 0) {
         entities[player].specType = 3
         entities[player].isgliding = true
         entities[player].fallvelocity = 1.5
@@ -122,13 +111,13 @@ function eagleability(entities, player, which) {
                 entities[player].goingsky = false
             } else {
                 clearInterval(de)
-                let newposition = entities[player].pos
+                let newposition = util.rotate(entities[player].pos.x, entities[player].pos.y, entities[player].pos.x + (entities[player].radius), entities[player].pos.y, entities[player].angle);
 
                 let tempentitygrab = new eaglegrab(newposition.x, newposition.y, entities[player].radius)
                 for (var grabbedwho in entities) {
                     if (entities[grabbedwho].type == 2 && !entities[grabbedwho].isdiving && !entities[grabbedwho].isflying &&
                         !entities[grabbedwho].usingability && !entities[grabbedwho].flags.includes(35) && !entities[grabbedwho].isgrabbed
-                        && ((entities[grabbedwho].tier <= entities[player].tier) || (entities[player].species == 1)) && entities[grabbedwho].arenaid == 0
+                        && (entities[grabbedwho].tier <= entities[player].tier || entities[player].species == 1) && entities[grabbedwho].arenaid == 0
                     ) {
                         if (util.getDistance2D(tempentitygrab.x, tempentitygrab.y, entities[grabbedwho].x, entities[grabbedwho].y) <= entities[grabbedwho].radius + tempentitygrab.radius) {
 
@@ -212,7 +201,8 @@ function eagleability(entities, player, which) {
                 entities[player].specType2 = 1
             }
         }, 10);
-    } else if (entities[player].flags.includes(889)) {
+    } else if (entities[player].abilitys.button_w.abil_currentclick == 1 && entities[player].abilitys.button_w.abil_active
+        && entities[player].z == 50 && entities[player].specType == 2 && entities[player].isgliding == false && entities[player].specType2 == 1) {
         //end ability
         if (entities[player].flags.includes(21)) {
             var delO = 21
@@ -224,15 +214,6 @@ function eagleability(entities, player, which) {
             entities[player].isgliding = true
             godown(entities, player, which)
 
-        }
-        if (entities[player].flags.includes(888)) {
-            var del0 = 888
-            var tmp = entities[player].flags.indexOf(del0)
-            if (-1 != tmp) {
-                entities[player].flags.splice(tmp, 1)
-            }
-            entities[player].isgliding = true
-            godown(entities, player, which)
         }
     }
 }
