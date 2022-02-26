@@ -50,11 +50,11 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
         if (msgData == 's:1 ') { ws.player.infability = true ; makeMsgNone()} //infability 
         if (msgData == 's:0 ') { ws.player.infability = false ; makeMsgNone()} //infability
         if (msgData == 'stopserver ') { makeMsgNone(); process.exit(1); ; } // stop server
-        if (msgData == 'godmode:on ') { //godmode on
+        if (msgData == 'godmode:on ' || msgData == 'gm:on ') { //godmode on
             ws.player.godmode = true
             makeMsgNone()
         }
-        if (msgData == 'godmode:off ') { //godmode off
+        if (msgData == 'godmode:off ' || msgData == 'gm:off ') { //godmode off
             ws.player.godmode = false
             makeMsgNone()
         }
