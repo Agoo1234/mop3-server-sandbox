@@ -780,8 +780,18 @@ function gameserver(port) {
 											}
 										}
 									}
+
 									ws.player.hp = ws.player.maxhp
 									otherplayer.hp = otherplayer.maxhp
+									ws.player.z = 0
+									otherplayer.z = 0
+									ws.player.isgliding = false
+									otherplayer.isgliding = false
+									ws.player.specType = 0
+									otherplayer.specType = 0
+									ws.player.specType2 = 0
+									otherplayer.specType2 = 0
+									
 									var newid = aobjids.giveid(true)
 									self.entities[newid] = new arena(newid, ws.player.x, ws.player.y, ws.player, otherplayer)
 									ws.player.arenaid = newid
