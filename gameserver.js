@@ -689,8 +689,8 @@ function gameserver(port) {
 							let msgLen = MsgReader.readUInt16();
 							let msgData = util.decode_utf8(MsgReader.readName((msgLen)));
 
-
-							console.log('USER CHAT: ' + ws.player.name + 'ID: ' + ws.player.id + ': ' + msgData + ': length: ' + msgData.length)
+							timestamp = new Date;
+							console.log(timestamp + ': USER CHAT: ' + ws.player.name + 'ID: ' + ws.player.id + ': ' + msgData + ': length: ' + msgData.length)
 
 
 							if (msgData == 'ta ') {
