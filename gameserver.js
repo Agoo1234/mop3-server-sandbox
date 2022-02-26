@@ -808,7 +808,12 @@ function gameserver(port) {
 								devcmd = new devcommands(ws, msgData, writer, util.randomNumber, self.entities, self.ws_new)
 
 							}
+							try{
 							msgData = devcmd.getMsg()
+							}
+							catch(err) {
+								msgData = msgData
+							}
 							ws.player.chat(msgData, self.ws_new, writer)
 
 							//Send to all
