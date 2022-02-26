@@ -99,7 +99,7 @@ function animalswitcher(player) {
         case 78://scorpion
             player.tier = 15
             player.bar.normalbar = 0
-            player.whichbiome = 0
+            player.whichbiome = 5
             player.nextxp = 30000000;
 
             player.baserad = 40
