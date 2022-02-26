@@ -533,6 +533,7 @@ function collisions(entities, i, j, aobjids) {
                                         if (distanceplay <= entity_2.radius + entity_1.radius) {
                                             entity_1.hp -= 15
                                             entity_1.timerstunned = Date.now() + 3000;
+                                            entity_1.lasthitby = entity_2.spawnedby2
 
                                             new death(entities, entity_1.id, entity_2, entity_2.spawnedby2)
                                             let slope = (entity_1.pos.y - entity_2.y) / (entity_1.pos.x - entity_2.x)
