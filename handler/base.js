@@ -602,7 +602,7 @@ function basehandle(entities, player, aobjids, serverstarted, ws_news) {
                     new deathhandle(entities, entities[player].id, entities[player].lasthitby)
                 } else {
                     if (entities[player].ws) {
-                        entities[player].ws.spectatingon = 0
+                        entities[player].ws.spectatingon = entities[player].killerid
                     }
                 }
                 entities[player].isdead = true
