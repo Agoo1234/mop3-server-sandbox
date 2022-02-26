@@ -1,4 +1,9 @@
+const gameserver = require("../gameserver");
+function makeMsgNone() {
+    newMsg = ""
+}
 function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
+    newMsg = msgData
 
     var dataS = String(msgData);
     var initial = dataS.split(":");
@@ -6,6 +11,7 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
         if (msgData == 'heal ') { //heal player
             ws.player.hp = ws.player.maxhp
             ws.player.barpercentage = 100
+            makeMsgNone()
         }
         /*   if(msgData == 'tpall:hole '){
                Object.keys(hole).forEach(function(da){
@@ -33,17 +39,19 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
             ws.send(writer.chat(ws.player.id, count + " "))
         }
 
-        if (msgData == 'up ') { ws.player.xp = 0 } // set xp to 0
-        if (msgData == 'invis:off ') { ws.player.isinvisible = false } // invis
-        if (msgData == 'invis:on ') { ws.player.isinvisible = true } // invis
-        if (msgData == 's:1 ') { ws.player.infability = true } //infability (doesnt work)
-        if (msgData == 's:0 ') { ws.player.infability = false } //infability (doesnt work)
-        if (msgData == 'stopserver ') { process.exit(1); } // stop server
+        if (msgData == 'up ') { ws.player.xp = 0 ; makeMsgNone()} // set xp to 0
+        if (msgData == 'invis:off ') { ws.player.isinvisible = false ; makeMsgNone()} // invis
+        if (msgData == 'invis:on ') { ws.player.isinvisible = true ; makeMsgNone()} // invis
+        if (msgData == 's:1 ') { ws.player.infability = true ; makeMsgNone()} //infability 
+        if (msgData == 's:0 ') { ws.player.infability = false ; makeMsgNone()} //infability
+        if (msgData == 'stopserver ') { makeMsgNone(); process.exit(1); ; } // stop server
         if (msgData == 'godmode:on ') { //godmode on
             ws.player.godmode = true
+            makeMsgNone()
         }
         if (msgData == 'godmode:off ') { //godmode off
             ws.player.godmode = false
+            makeMsgNone()
         }
         /*for (var j in initial) {
             console.log(initial[j])
@@ -67,6 +75,7 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                     }
 
                 }
+                makeMsgNone()
                 break;
             case "c": // send messages through all players
 
@@ -81,8 +90,8 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                             }
                         }
                     }
-
                 }
+                makeMsgNone()
                 break
             case "cp":
 
@@ -101,11 +110,13 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                     }
 
                 }
+                makeMsgNone()
                 break
             case "size": // set size
                 let m = parseInt(initial[1])
                 if (m > 50) m = 50
                 ws.player.moreradius = m
+                makeMsgNone()
                 break
             case "changeall": // change all entities
 
@@ -125,21 +136,25 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                     }
 
                 }
+                makeMsgNone()
                 break;
 
             case "zoom": // player zoom
                 ws.player.playcamera = parseInt(initial[1])
+                makeMsgNone()
                 break;
             case "tp": // teleport
                 ws.player.pos.x = parseInt(initial[1])
                 ws.player.pos.y = parseInt(initial[2])
                 console.log('Teleported to ' + 'x:' + initial[1] + 'y:' + initial[2])
+                makeMsgNone()
                 break;
 
             case "color": // set color
                 ws.player.isinvisible = true
                 ws.player.colorname = parseInt(initial[1])
                 ws.player.isinvisible = false
+                makeMsgNone()
 
 
                 break;
@@ -147,11 +162,13 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
 
             case "x": // set xp
                 ws.player.xp = + parseInt(initial[1])
+                makeMsgNone()
 
                 break;
         
             case "xp": // set xp
                 ws.player.xp = + parseInt(initial[1])
+                makeMsgNone()
     
                 break;
             case "createobj": // create object
@@ -160,10 +177,12 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
 
                 objtype = parseInt(initial[1])
                 objrad = parseInt(initial[2])
+                makeMsgNone()
 
                 break;
             case "species": // change species
                 ws.player.species = parseInt(initial[1])
+                makeMsgNone()
 
 
 
@@ -176,9 +195,11 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 ws.player.secondaryType = parseInt(initial[1])
                 ws.player.species = parseInt(initial[2])
                 ws.player.radius = parseInt(initial[3])
+                makeMsgNone()
                 break
             case "a":
                 ws.player.secondaryType = parseInt(initial[1])
+                makeMsgNone()
                 break;
             case "killall":
                 for (let da in entities) {
@@ -189,11 +210,13 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                     }
                     
                 }
+                makeMsgNone()
                 break
             case "killme":
                 ws.player.invincible = false
                 ws.player.godmode = false
                 ws.player.hp = -1
+                makeMsgNone()
                 break
             case "kill":
                 var namepart = initial[1]
@@ -206,13 +229,16 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                         }
                     }
                 }
+                makeMsgNone()
                 break
             }
 
     }
+
 }
 devcommands.prototype = {
-
-
+    getMsg: function() {
+        return newMsg;
+    }
 }
 module.exports = devcommands;

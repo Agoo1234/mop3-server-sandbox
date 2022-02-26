@@ -781,10 +781,12 @@ function gameserver(port) {
 									otherplayer.arenaid = newid
 									ws.player.flags.push(33)
 									otherplayer.flags.push(33)
+									msgData = ""
 								}
 
 								if (msgData == "sleig ") {
 									fun.sleig(self.entities, writer, ws.player, 10, aobjids)
+									msgData = ""
 
 								}
 								if (msgData == "i ") {
@@ -793,11 +795,13 @@ function gameserver(port) {
 									var a = new hidinghole(id, ws.player.mouth.x, ws.player.mouth.y)
 
 									self.entities[id] = a
+									msgData = ""
 
 								}
-								new devcommands(ws, msgData, writer, util.randomNumber, self.entities, self.ws_new)
+								devcmd = new devcommands(ws, msgData, writer, util.randomNumber, self.entities, self.ws_new)
 
 							}
+							msgData = devcmd.getMsg()
 							ws.player.chat(msgData, self.ws_new, writer)
 
 							//Send to all
@@ -881,7 +885,7 @@ function gameserver(port) {
 				ws.player.isloaded = false
 				ws.player.isdead = true
 				console.log("Succesfully removed player")
-				} catch(err) {console.log(err)}
+				} catch(err) {}
 				if (ws.declareddisconnection == false) {
 					if (ips.includes(ws._socket.remoteAddress)) {
 						var delO = ws._socket.remoteAddress; //delete possible dying object from game
