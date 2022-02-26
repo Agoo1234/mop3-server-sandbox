@@ -47,8 +47,9 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
         if (msgData == 'up ') { ws.player.xp = 0 ; makeMsgNone()} // set xp to 0
         if (msgData == 'invis:off ') { ws.player.isinvisible = false ; makeMsgNone()} // invis
         if (msgData == 'invis:on ') { ws.player.isinvisible = true ; makeMsgNone()} // invis
-        if (msgData == 's:1 ') { ws.player.infability = true ; makeMsgNone()} //infability 
-        if (msgData == 's:0 ') { ws.player.infability = false ; makeMsgNone()} //infability)
+        if (msgData == 's:1 ' || msgData == 'cooldown:1 ') { ws.player.infability = true ; makeMsgNone()} //infability 
+        if (msgData == 's:0 ' || msgData == 'cooldown:0 ') { ws.player.infability = false ; makeMsgNone()} //infability)
+        if (msgData == 'cooldown ' || msgData == 's ') { if(ws.player.infability) {ws.player.infability = false} else {ws.player.infability = true} ; makeMsgNone()} // infability
         if (msgData == 'stopserver ') { makeMsgNone(); process.exit(1); ; } // stop server
         if (msgData == 'godmode ' || msgData == 'gm ') {
             if(ws.player.godmode) ws.player.godmode = false
