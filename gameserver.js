@@ -877,7 +877,11 @@ function gameserver(port) {
 			ws.on('close', function close() {
 
 				ws.terminate();
-
+				try{
+				ws.player.isloaded = false
+				ws.player.isdead = true
+				console.log("Succesfully removed player")
+				} catch(err) {console.log(err)}
 				if (ws.declareddisconnection == false) {
 					if (ips.includes(ws._socket.remoteAddress)) {
 						var delO = ws._socket.remoteAddress; //delete possible dying object from game

@@ -13,6 +13,8 @@ function deathhandle(entities, player2, player1) {
             entities[player1].barpercentage = 100
 
             entities[player2].hp = entities[player2].maxhp
+            
+            entities[player2].isloaded = false
 
             entities[player2].isdead = true
             if (entities[player2].ws) {
