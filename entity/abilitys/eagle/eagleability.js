@@ -128,7 +128,7 @@ function eagleability(entities, player, which) {
                 for (var grabbedwho in entities) {
                     if (entities[grabbedwho].type == 2 && !entities[grabbedwho].isdiving && !entities[grabbedwho].isflying &&
                         !entities[grabbedwho].usingability && !entities[grabbedwho].flags.includes(35) && !entities[grabbedwho].isgrabbed
-                        && entities[grabbedwho].tier <= entities[player].tier && entities[grabbedwho].arenaid == 0
+                        && ((entities[grabbedwho].tier <= entities[player].tier) || (entities[player].species == 1)) && entities[grabbedwho].arenaid == 0
                     ) {
                         if (util.getDistance2D(tempentitygrab.x, tempentitygrab.y, entities[grabbedwho].x, entities[grabbedwho].y) <= entities[grabbedwho].radius + tempentitygrab.radius) {
 
