@@ -494,16 +494,23 @@ function gameserver(port) {
 								truename = ws.name
 								let pos = new vector(0, 0); // spawn pos
 								var a = new player(ws, id, pos, truename);
+
+								if (ws.isyoutuber) {
+									a.colorname = 2
+								}
+
 								if (ws.isdeveloper) {
 									if (a.name == "AwesomeAg " || a.name == "Ag ") {
 										a.name = "AwesomeAg - DEVELOPER 🔨 "
 										a.colorname = 4
 									}
 								}
+
 								if (a.name == "#memepig9588 ") {
 									a.name = "MEMEPIG - BUG FINDER "
 									a.colorname = 6
 								}
+
 								if (a.name == "#95036607 ") {
 									ws.isdeveloper = true
 									a.name = "AwesomeAg - DEVELOPER 🔨 "
