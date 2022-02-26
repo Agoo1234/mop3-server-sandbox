@@ -1,4 +1,9 @@
 const gameserver = require("../gameserver");
+const hill = require("../entity/objects/objects/hill")
+const newobjids = require("../objids")
+
+const aobjids = new newobjids()
+
 function makeMsgNone() {
     newMsg = ""
 }
@@ -177,8 +182,17 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
 
                 objtype = parseInt(initial[1])
                 objrad = parseInt(initial[2])
+
                 makeMsgNone()
 
+                break;
+            case "makehill": // make a hill
+                var objids = aobjids.giveid(true)
+                h = new hill(objids, ws.player.pos.x, ws.player.pos.y)
+                entities[objids] = h
+                
+
+                makeMsgNone()
                 break;
             case "species": // change species
                 ws.player.species = parseInt(initial[1])
