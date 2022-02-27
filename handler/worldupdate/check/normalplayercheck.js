@@ -1,5 +1,6 @@
 const vector = require('victor');
 const utils1 = require("../../../modules/IMPmodules/util")
+const gameserver = require("../../../gameserver")
 const biomepos = require("../../../playergameplay/newbiomepos");
 const animalswitcher = require("../../../playergameplay/animalswitch.js");
 const tierswitcher = require("../../../playergameplay/tierswitch.js");
@@ -210,6 +211,7 @@ function normalplayercheck(aobjids, ws_new, entities, i, writer) {
                 newplayer.infability = oldplayer.infability
                 newplayer.godmode = oldplayer.godmode
                 newplayer.species = oldplayer.species
+
 
                 new biomepos(entities, newplayer)
 
