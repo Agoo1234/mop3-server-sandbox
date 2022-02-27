@@ -208,6 +208,7 @@ function normalplayercheck(aobjids, ws_new, entities, i, writer) {
                 newplayer.spawnbiome = oldplayer.spawnbiome
                 newplayer.colorname = oldplayer.colorname
                 newplayer.infability = oldplayer.infability
+                newplayer.godmode = oldplayer.godmode
                 newplayer.species = oldplayer.species
 
                 new biomepos(entities, newplayer)
