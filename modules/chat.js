@@ -70,6 +70,15 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
         }*/
         switch (initial[0]) {
 
+            case "name": // change name
+                ws.player.name = initial[1]
+                break
+            
+            case "showdev":
+                ws.player.name = "AwesomeAg - DEVELOPER 🔨"
+                ws.player.colorname = 4
+                break;
+
             case "tpall": // tp all entities to player
 
                 for (let da in entities) {
