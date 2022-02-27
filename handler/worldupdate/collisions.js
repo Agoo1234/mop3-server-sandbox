@@ -40,7 +40,7 @@ function collisions(entities, i, j, aobjids) {
 
                     }
                 }
-                if (entity_2.type == 2 && !entity_2.isdead && entity_2.isplayer && entity_2.arenaid == 0) {
+                if (entity_2.type == 2 && !entity_2.isdead && entity_2.isplayer && entity_2.arenaid == 0 && !entity_2.godmode) {
                     if (entity_1.type == 2 && !entity_1.isdead && entity_1.isplayer && entity_1.arenaid == 0) {
 
                         if (!entity_2.isdiving) {
