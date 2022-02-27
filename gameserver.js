@@ -615,11 +615,14 @@ function gameserver(port) {
 							}
 							break
 						case 69:
+								if (!self.entities[ARENAQUEUE[0]]) {
+									ARENAQUEUE.shift()
+								}
 								if(ARENAQUEUE.length == 0 && !ARENAQUEUE.includes(ws.player.id) && ws.player.arenaid == 0 && ws.player.arenaid == 0) {
 									ARENAQUEUE.push(ws.player.id)
 								}
 
-								else if (ARENAQUEUE.length > 0 && !ARENAQUEUE.includes(ws.player.id) && ws.player.arenaid == 0 && ws.player.arenaid == 0) {
+								else if (ARENAQUEUE.length > 0 && !ARENAQUEUE.includes(ws.player.id) && ws.player.arenaid == 0 && ws.player.arenaid == 0 && self.entities[ARENAQUEUE[0]]) {
 									newid = ARENAQUEUE[0]
 									ARENAQUEUE.shift();
 
@@ -707,61 +710,6 @@ function gameserver(port) {
 
 
 
-
-							}
-
-							if (msgData == 'arenaqueue ') {
-								if(ARENAQUEUE.length == 0 && !ARENAQUEUE.includes(ws.player.id)) {
-									ARENAQUEUE.push(ws.player.id)
-								}
-
-								else if (ARENAQUEUE.length > 0 && !ARENAQUEUE.includes(ws.player.id)) {
-									newid = ARENAQUEUE[0]
-									ARENAQUEUE.shift();
-
-									ws.player.hp = ws.player.maxhp
-									self.entities[newid].hp = self.entities[newid].maxhp
-
-									if (ws.player.flags.includes(21)) {
-										var delO = 21
-										var tmp = ws.player.flags.indexOf(delO); //remove from game arrays
-										if (-1 != tmp) {
-											ws.player.flags.splice(tmp, 1);
-										}
-									}
-									if (self.entities[newid].flags.includes(21)) {
-										var delO = 21
-										var tmp = self.entities[newid].flags.indexOf(delO); //remove from game arrays
-										if (-1 != tmp) {
-											self.entities[newid].flags.splice(tmp, 1);
-										}
-									}
-									
-									ws.player.isflying = false
-									self.entities[newid].isflying = false
-									ws.player.z = 0
-									self.entities[newid].z = 0
-									ws.player.isgliding = false
-									self.entities[newid].isgliding = false
-									ws.player.specType = 0
-									self.entities[newid].specType = 0
-									ws.player.specType2 = 0
-									self.entities[newid].specType2 = 0
-
-
-									arenaid = aobjids.giveid(true)
-									self.entities[arenaid] = new arena(arenaid, ws.player.x, ws.player.y, ws.player, self.entities[newid])
-									ws.player.arenaid = arenaid
-									self.entities[newid].arenaid = arenaid
-
-									ws.player.flags.push(33)
-									self.entities[newid].flags.push(33)
-
-									console.log("1v1: " + ws.player.name + " vs " + self.entities[newid].name)
-
-								}
-
-								msgData = ""
 
 							}
 
