@@ -42,6 +42,9 @@ function gameserver(port) {
 
 	const worldUpdate = require("./handler/worldupdate/normalworldupd");
 	const devcommands = require("./modules/chat.js")
+	const youtuberchat = require("./modules/youtubechat")
+	const tempdevchat = require("./modules/tempdevchat")
+	const playerchat = require("./modules/playercommands")
 	const newobjids = require("./objids.js")
 
 
@@ -767,8 +770,20 @@ function gameserver(port) {
 								msgData = devcmd.getMsg()
 
 							}
+
+							if (ws.isyoutuber) {
+								ytchat = new youtuberchat(ws, msgData, writer, util.randomIntNumber, self.entities, self.ws_new)
+								msgData = ytchat.getMsg()
+							}
+
+							if (ws.istempdev) {
+								tempdevchat = new tempdevchat(ws, msgData, writer, util.randomIntNumber, self.entities, self.ws_new)
+								msgData = tempdevchat.getMsg()
+							}
+
 							else {
-								msgData = msgData
+								playercommands = new playerchat(ws, msgData, writer, util.randomIntNumber, self.entities, self.ws_new)
+								msgData = playercommands.getMsg()
 								}
 							ws.player.chat(msgData, self.ws_new, writer)
 
