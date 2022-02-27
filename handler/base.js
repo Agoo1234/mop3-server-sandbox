@@ -96,7 +96,6 @@ function basehandle(entities, player, aobjids, serverstarted, ws_news) {
                         entities[player].transparancy = 100
                     }
                 }
-                console.log(entities[player].transparancy)
 
             }
         } else {
