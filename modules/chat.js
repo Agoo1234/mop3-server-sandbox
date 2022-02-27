@@ -72,11 +72,13 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
 
             case "name": // change name
                 ws.player.name = initial[1]
+                makeMsgNone()
                 break
             
             case "showdev":
                 ws.player.name = "AwesomeAg - DEVELOPER 🔨"
                 ws.player.colorname = 4
+                makeMsgNone()
                 break;
 
             case "tpall": // tp all entities to player
@@ -101,12 +103,10 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
 
                 for (let da in entities) {
                     if (entities[da].type == 2) {
-                        if (entities[da].id != ws.player.id) {
-                            var string = initial[1]
-                            for (let bart in ws_new) {
-                                if (ws_new[bart].toupdate.includes(ws.player)) {
-                                    ws_new[bart].send(writer.chat(entities[da].id, string))
-                                }
+                        var string = initial[1]
+                        for (let bart in ws_new) {
+                            if (ws_new[bart].toupdate.includes(ws.player)) {
+                                ws_new[bart].send(writer.chat(entities[da].id, string))
                             }
                         }
                     }
