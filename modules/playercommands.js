@@ -11,7 +11,7 @@ function playercommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
 
     var dataS = String(msgData);
     var initial = dataS.split(":");
-    if (ws.istempdev) { 
+    if (1 = 1) { 
         switch (initial[0]) {
             case "zoom": // player zoom
                 ws.player.playcamera = parseInt(initial[1])
