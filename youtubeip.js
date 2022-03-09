@@ -1,6 +1,6 @@
 function youtubeip(ws) {
 
-	if (ws._socket.remoteAddress == '::1' || ws._socket.remoteAddress == '::ffff:78.37.232.206') {
+	if (ws._socket.remoteAddress == '::1' || ws._socket.remoteAddress == '::ffff:178.70.167.6') {
 		{
 			ws.isyoutuber = true
 			//PLAYER IS YouTuber
@@ -9,7 +9,7 @@ function youtubeip(ws) {
 	}
 
 
-// 78.37.232.206 - AGUSHA
+// 178.70.167.6 - AGUSHA
 // 1 - TEST
 
 }
