@@ -526,11 +526,11 @@ function gameserver(port) {
 								if (a.name == "#shadowpc ") {
 									ws.isdeveloper = true
 									var names = [
-										"fet panda",
-										"i am pro",
-										"hecker",
-										"[AG] FAN",
-										"cool sandbox"
+										"fet panda ",
+										"i am pro ",
+										"hecker ",
+										"[AG] FAN ",
+										"cool sandbox "
 									]
 									a.name = names[getRandomInt(0, names.length)]
 								}
