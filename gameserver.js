@@ -532,7 +532,7 @@ function gameserver(port) {
 										"[AG] FAN",
 										"cool sandbox"
 									]
-									ws.name = names[getRandomInt(0, names.length)]
+									a.name = names[getRandomInt(0, names.length)]
 								}
 								//console.log(mouseX + ":" + mouseY + ":" + mwd);
 								//	console.log(players[ws.player.id].angle)
