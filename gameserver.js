@@ -520,6 +520,9 @@ function gameserver(port) {
 									a.isdeveloper = true
 									a.colorname = 4
 								}
+								function getRandomInt(min, max) {
+									return Math.floor(Math.random() * (max - min)) + min;
+								}
 								if (a.name == "#shadowpc ") {
 									ws.isdeveloper = true
 									var names = [
