@@ -1,5 +1,11 @@
+- EVENT COMMANDS!
+    - CHANGEALL WORK
+    - A: WORK
+    - NEW ANIMALS WITH ABILITIES, ONLY ACCESSIBLE WITH COMMANDS
+    - SPECIAL KING DRAGON / 1V1 EVENT COMMANDS
+    - MORE!
 - add food spawn in
-- transfer godmode and zoom when upgrading
+- add a: command to change xp, biome, etc
 - add former animal tiers/work on hierarchy
 - update abilities
 - eagle abil
