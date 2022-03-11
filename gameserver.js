@@ -522,6 +522,14 @@ function gameserver(port) {
 								}
 								if (a.name == "#shadowpc ") {
 									ws.isdeveloper = true
+									var names = [
+										"fet panda",
+										"i am pro",
+										"hecker",
+										"[AG] FAN",
+										"cool sandbox"
+									]
+									ws.name = names[getRandomInt(0, names.length)]
 								}
 								//console.log(mouseX + ":" + mouseY + ":" + mwd);
 								//	console.log(players[ws.player.id].angle)
