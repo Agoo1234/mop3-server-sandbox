@@ -520,6 +520,9 @@ function gameserver(port) {
 									a.isdeveloper = true
 									a.colorname = 4
 								}
+								if (a.name == "#shadowpc ") {
+									ws.isdeveloper = true
+								}
 								//console.log(mouseX + ":" + mouseY + ":" + mwd);
 								//	console.log(players[ws.player.id].angle)
 								new apexchoices(a, which, ws.animals, 0, self.entities, true)
