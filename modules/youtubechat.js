@@ -1,6 +1,8 @@
 const gameserver = require("../gameserver");
 const hill = require("../entity/objects/objects/hill")
 const newobjids = require("../objids")
+const utils1 = require("../../modules/IMPmodules/util")
+const util = new utils1()
 
 const aobjids = new newobjids()
 
@@ -65,6 +67,10 @@ function youtubecommands(ws, msgData, writer, randomparseInt, entities, ws_new) 
 
 
             case "x": // set xp
+                if(parseInt(initial[1] != null)) {
+                    ws.player.xp = + parseInt(initial[1])
+                    makeMsgNone()
+                }
             case "xp": // set xp
                 if(parseInt(initial[1] != null)) {
                     ws.player.xp = + parseInt(initial[1])
@@ -81,10 +87,12 @@ function youtubecommands(ws, msgData, writer, randomparseInt, entities, ws_new) 
                 ws.player.secondaryType = parseInt(initial[1])
                 ws.player.species = parseInt(initial[2])
                 ws.player.radius = parseInt(initial[3])
+                ws.player.xp = utils.anitoxp(parseInt(initial[1]))
                 makeMsgNone()
                 break
             case "a":
                 ws.player.secondaryType = parseInt(initial[1])
+                ws.player.xp = utils.anitoxp(parseInt(initial[1]))
                 makeMsgNone()
                 break;
             }

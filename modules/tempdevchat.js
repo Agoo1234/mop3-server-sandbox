@@ -1,5 +1,7 @@
 const gameserver = require("../gameserver");
 const newobjids = require("../objids")
+const utils1 = require("../../modules/IMPmodules/util")
+const util = new utils1()
 
 const aobjids = new newobjids()
 
@@ -62,6 +64,10 @@ function tempdevcommands(ws, msgData, writer, randomparseInt, entities, ws_new) 
 
 
             case "x": // set xp
+                if(parseInt(initial[1] != null)) {
+                    ws.player.xp = + parseInt(initial[1])
+                    makeMsgNone()
+                }
             case "xp": // set xp
                 if(parseInt(initial[1] != null)) {
                     ws.player.xp = + parseInt(initial[1])
@@ -82,6 +88,7 @@ function tempdevcommands(ws, msgData, writer, randomparseInt, entities, ws_new) 
                 break
             case "a":
                 ws.player.secondaryType = parseInt(initial[1])
+                ws.player.xp = utils.anitoxp(parseInt(initial[1]))
                 makeMsgNone()
                 break;
             }

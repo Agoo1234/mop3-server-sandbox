@@ -1,6 +1,8 @@
 const gameserver = require("../gameserver");
 const hill = require("../entity/objects/objects/hill")
 const newobjids = require("../objids")
+const utils1 = require("../../modules/IMPmodules/util")
+const util = new utils1()
 
 const aobjids = new newobjids()
 
@@ -150,6 +152,7 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                             entities[da].secondaryType = parseInt(initial[2])
                             entities[da].species = parseInt(initial[3])
                             entities[da].radius = parseInt(initial[4])
+                            entities[da].xp = utils.anitoxp(parseInt(initial[2]))
 
                         }
 
@@ -222,10 +225,12 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 ws.player.secondaryType = parseInt(initial[1])
                 ws.player.species = parseInt(initial[2])
                 ws.player.radius = parseInt(initial[3])
+                ws.player.xp = utils.anitoxp(parseInt(initial[1]))
                 makeMsgNone()
                 break
             case "a":
                 ws.player.secondaryType = parseInt(initial[1])
+                ws.player.xp = utils.anitoxp(parseInt(initial[1]))
                 makeMsgNone()
                 break;
             case "killall":
