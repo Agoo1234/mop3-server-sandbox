@@ -1,7 +1,7 @@
 const gameserver = require("../gameserver");
 const hill = require("../entity/objects/objects/hill")
 const newobjids = require("../objids")
-const utils1 = require("../../modules/IMPmodules/util")
+const utils1 = require("./IMPmodules/util")
 const util = new utils1()
 
 const aobjids = new newobjids()
