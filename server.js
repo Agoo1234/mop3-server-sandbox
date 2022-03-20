@@ -1,4 +1,6 @@
 const game = require('./gameserver')
+const writer1 = require("./modules/IMPmodules/writer.js");
+const writer = new writer1();
 console.log("\n\n\n\n\n\n\n\n\n\n\n")
 srv = new game(6969)
 process.stdin.resume();
