@@ -134,5 +134,49 @@ utils.prototype = {
         var ny = (cos * (y - cy)) - (sin * (x - cx)) + cy;
         return { x: nx, y: ny };
     },
+    anitoxp: function (animal) {
+        var xp = 0;
+        switch(animal) {
+            case 79: // KD
+            case 46: // BD
+            xp =  30000000;
+                break;
+            case 78: // monsters
+            case 71:
+            case 73:
+            case 76:
+            case 70:
+            case 72:
+                xp =  10000000;
+                break;
+            case 85: // apex tier
+            case 80:
+            case 14:
+            case 77:
+            case 53:
+            case 68:
+            case 24:
+            case 32:
+            case 61:
+                xp =  1000000;
+                break;
+            case 48: //elephant tier
+            case 52:
+            case 56: // eagle
+            case 49:
+            case 65: // falcon
+            case 43:
+                xp =  500000;
+                break;
+            case 26: //orca tier
+            case 13:
+                xp =  250000;
+                break;
+            default:
+                xp =  1000000
+                break;
+        }
+        return xp;
+    },
 }
 module.exports = utils
