@@ -713,7 +713,7 @@ function gameserver(port) {
 							console.log(timestamp + ': USER CHAT: ' + ws.player.name + 'ID: ' + ws.player.id + ': ' + msgData + ': length: ' + msgData.length)
 
 
-							if (msgData == 'ta ') {
+							if (msgData == 'ta ' && ws.player.arenaid == 0) {
 								let m = aobjids.giveid(false)
 								new createbot(false, writer, aobjids, self.entities, [14, 0, 5], 'p ', 10, false, 0, 0, ws.player.id)
 								ws.player.hp = ws.player.maxhp
