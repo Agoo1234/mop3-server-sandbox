@@ -19,7 +19,6 @@ const name1 = require("../../modules/botnames");
 const name = new name1()
 
 
-
 function collisions(entities, i, j, aobjids) {
     let entity_1 = entities[i]
     let entity_2 = entities[j]
