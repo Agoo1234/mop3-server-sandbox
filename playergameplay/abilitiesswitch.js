@@ -309,6 +309,20 @@ function abilitiesswitcher(ability) {
                 abil_bardivideusable: 1,
             }
             break
+        case 83: // superboost / frog
+        button = {
+            abil_currentclick: 0,
+            abil_Type: 83,
+            abil_usable: true,
+            abil_recharging: false,
+            abil_possible: true,
+            abil_active: false,
+            abil_time: 5.5,
+            abil_timestamp: Date.now(),
+            abil_noflags: [20,19],
+            abil_bardivideusable: 1,
+        }
+        break
         case 57://falcon attack
             button = {
 

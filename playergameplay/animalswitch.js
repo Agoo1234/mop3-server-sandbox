@@ -698,6 +698,27 @@ function animalswitcher(player) {
             player.abilitys.button_w_mini = abilitiesswitcher(100);
             break
         // special animals (events only)
+        case 62: // frog
+        player.tier = 14
+        player.bar.normalbar = 0
+        player.whichbiome = 0
+        player.nextxp = 10000000;
+
+        player.baserad = 15
+        player.addrad = 0.1
+        player.lessrad = 0.05
+        player.flags.push(26)
+
+        player.speeds = {
+            landspeed: 5,
+            oceanspeed: 5,
+            arcticspeed: 5,
+            lavaspeed: 4,
+            flyspeed: 20,
+        }
+        player.bar.maxairbarpercentage = 350
+        player.abilitys.button_w = abilitiesswitcher(83);
+        player.abilitys.button_w_mini = abilitiesswitcher(100);
         //dif
 
         default:
