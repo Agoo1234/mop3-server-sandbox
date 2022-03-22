@@ -165,6 +165,18 @@ function collisions(entities, i, j, aobjids) {
                                     }
                                 }
                             }
+                            if (entity_2.type == 14 && entity_2.secondaryType == 76) {
+                                if (entity_2.spawnedby2 != entity_1.id) {
+                                    if (distanceplay <= (entity_1.radius + entity_2.radius)) {
+                                        entity_1.hp -= 10
+                                        entity_1.timerbleeding = Date.now() + 4500
+
+                                        entity_2.killerid = entity_1.id
+                                        entity_2.isdead = true
+                                        new death(entities, entity_1.id, entity_2.spawnedby2)
+                                    }
+                                }
+                            }
                             if (entity_2.type == 14 && entity_2.secondaryType == 81) {
                                 if (entity_2.speartype == "Spear") {
                                     if (entity_2.specType != 2 && entity_2.specType != 3) {
