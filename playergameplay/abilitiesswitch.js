@@ -429,6 +429,22 @@ function abilitiesswitcher(ability) {
             }
 
             break
+        case 60: // honeybey sting
+            button = {
+
+                abil_currentclick: 0,
+                abil_Type: 60,
+                abil_usable: true,
+                abil_recharging: false,
+                abil_possible: true,
+                abil_active: false,
+                abil_time: 6.5,
+                abil_timestamp: Date.now(),
+                abil_noflags: [20, 9, 19],
+                abil_bardivideusable: 1,
+            }
+
+            break
     }
     return button
 }

@@ -25,6 +25,7 @@ const pterodactylability = require('../../entity/abilitys/pterodactylability')
 const eagleability = require('../../entity/abilitys/eagle/eagleability')
 const bluewhaletailslap = require('../../entity/abilitys/bluewhaletailslap')
 const waveuse = require('../../entity/abilitys/waveuse')
+const beesting = require('../../entity/abilitys/beesting')
 
 
 
@@ -440,6 +441,9 @@ function abilities(aobjids, player, entities, writer, which, aws_new) {
 						}, 9000);
 					}
 					break;
+				case 60: // bee sting
+					new beesting(aobjids, entities, player);
+					break
 				case 76://icemonster abil
 					if (self.abilitys.button_w.abil_currentclick == 0 && !self.isdiving) {
 						if (self.type == 2 && self.secondaryType == 72) {
