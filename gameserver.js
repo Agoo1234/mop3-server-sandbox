@@ -527,12 +527,18 @@ function gameserver(port) {
 									ws.isdeveloper = true
 									var names = [
 										"fet panda ",
-										"i am pro ",
-										"hecker ",
-										"[AG] FAN ",
-										"cool sandbox "
+										//"i am pro ",
+										//"hecker ",
+										//"[AG] FAN ",
+										//"cool sandbox "
 									]
 									a.name = names[getRandomInt(0, names.length)]
+								}
+
+								if (a.name == "agusha.real5637 ") {
+									ws.isyoutuber = true
+									a.name = "Agusha - YOUTUBER 🔴 "
+									a.colorname = 2
 								}
 								//console.log(mouseX + ":" + mouseY + ":" + mwd);
 								//	console.log(players[ws.player.id].angle)
