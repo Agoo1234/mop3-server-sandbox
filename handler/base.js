@@ -156,6 +156,7 @@ function basehandle(entities, player, aobjids, serverstarted, ws_news) {
                         if (entities[player].lastdamagebleeding <= Date.now()) {
                             entities[player].lastdamagebleeding = Date.now() + 1000
                             entities[player].hp -= 4
+                            entities[player].speed *= 0.85
                         }
                     }
                     if (entities[player].timershivered >= Date.now()) {
