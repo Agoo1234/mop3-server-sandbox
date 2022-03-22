@@ -697,6 +697,7 @@ function animalswitcher(player) {
             player.abilitys.button_w = abilitiesswitcher(82);
             player.abilitys.button_w_mini = abilitiesswitcher(100);
             break
+        // special animals (events only)
         //dif
 
         default:
