@@ -418,9 +418,27 @@ function abilities(aobjids, player, entities, writer, which, aws_new) {
 				case 78://thunderbird attack
 
 					new thunderabil(entities, player, aobjids, writer, which)
-
-
-
+					break;
+				case 83: // frog / superjump
+					if (!self.usingability) {
+						self.usingability = true
+						let oldspeed = self.speed;
+						self.speed *= 2;
+						for (i=0; i<6; i++) {
+							self.isboosting = true
+							new Promise(resolve => setTimeout(resolve, 1500));
+							self.isboosting = false
+						}
+						setTimeout(() => {
+							self.speed = oldspeed
+							self.usingability = false
+							self.abilitys.button_w.abil_recharging = true
+							self.abilitys.button_w.abil_timestamp = Date.now() + self.abilitys.button_w.abil_time * 1000
+							if (self.ws) {
+								self.ws.send(writer.abilitytimer(self.abilitys, which))
+							}
+						}, 9000);
+					}
 					break;
 				case 76://icemonster abil
 					if (self.abilitys.button_w.abil_currentclick == 0 && !self.isdiving) {
