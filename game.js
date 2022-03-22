@@ -12,8 +12,8 @@ const botsabilityuse = true
 const collideeveryone = false
 const respawnbots = true
 if (gamemode == 2) {
-    gameW = 6000
-    gameH = 6000
+    gameW = 12000
+    gameH = 12000
 
 }
 function game() {
