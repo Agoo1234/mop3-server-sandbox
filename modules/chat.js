@@ -1,7 +1,8 @@
 const gameserver = require("../gameserver");
 const hill = require("../entity/objects/objects/hill")
 const newobjids = require("../objids")
-const utils1 = require("./IMPmodules/util")
+const utils1 = require("./IMPmodules/util");
+const { del } = require("express/lib/application");
 const utils = new utils1()
 
 const aobjids = new newobjids()
@@ -267,13 +268,50 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
             case "tempdev":
                 tempname = initial[1]
                 for (let da in entities) {
-                    if (entities[da].player && entities[da].type == 2) {
+                    if (entities[da].player) {
                         if (entities[da].name.includes(tempname)) {
                             entities[da].istempdev = true
                         }
                     }
                 }
+                makeMsgNone()
                 break;
+            case "kdtourney":
+                inlist = []
+                for (let da in entities) {
+                    if(!entities[da].isbot && entities[da].type == 2) {
+                        entities[da].secondaryType = 79
+                        entities[da].xp = 10000000
+                        entities[da].arenaid = 0
+                        inlist.push(entities[da])
+                    }
+                }
+                for (i = 0; i < inlist.length; i += 2) {
+                    entities[inlist[i]].isflying = false
+                    entities[inlist[i+1]].isflying = false
+                    entities[inlist[i]].z = 0
+                    entities[inlist[i+1]].z = 0
+                    entities[inlist[i]].isgliding = false
+                    entities[inlist[i+1]].isgliding = false
+                    entities[inlist[i]].specType = 0
+                    entities[inlist[i+1]].specType = 0
+                    entities[inlist[i]].specType2 = 0
+                    entities[inlist[i+1]].specType2 = 0
+
+
+                    arenaid = aobjids.giveid(true)
+                    entities[arenaid] = new arena(arenaid, entities[inlist[i]].x, entities[inlist[i]].y, entities[inlist[i]], entities[inlist[i+1]])
+                    entities[inlist[i]].arenaid = arenaid
+                    entities[inlist[i+1]].arenaid = arenaid
+                    entities[inlist[i]].flags.push(33)
+                    entities[inlist[i+1]].flags.push(33)
+                    console.log("kdtourney")
+                }
+                console.log(inlist)
+                inlist = [] // save memory or something
+                makeMsgNone()
+                break;
+                // TODO: make it so global variable "kdtourney" is true (with list) and everyone who is kd in list 1v1s until winner (gets to become final boss or something - for now infinite xp)
             }
 
     }
