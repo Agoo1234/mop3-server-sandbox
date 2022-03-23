@@ -732,13 +732,12 @@ function animalswitcher(player) {
             player.flags.push(26)
 
             player.speeds = {
-                landspeed: 5,
-                oceanspeed: 5,
-                arcticspeed: 5,
-                lavaspeed: 4,
-                flyspeed: 6,
+                landspeed: 6,
+                oceanspeed: 6,
+                arcticspeed: 6,
+                lavaspeed: 6,
+                flyspeed: 10,
             }
-            player.isflying = true;
             player.candive = false;
             player.bar.maxairbarpercentage = 10
             player.abilitys.button_w = abilitiesswitcher(60);
