@@ -1,5 +1,5 @@
-var gameW = 13500
-var gameH = 1200
+var gameW = 9000
+var gameH = 8000
 
 const gamemode = 0
 
