@@ -2,7 +2,6 @@ const gameserver = require("../gameserver");
 const hill = require("../entity/objects/objects/hill")
 const newobjids = require("../objids")
 const utils1 = require("./IMPmodules/util");
-const { del } = require("express/lib/application");
 const utils = new utils1()
 
 const aobjids = new newobjids()
