@@ -4,8 +4,10 @@
     - NEW ANIMALS WITH ABILITIES, ONLY ACCESSIBLE WITH COMMANDS
     - SPECIAL KING DRAGON / 1V1 EVENT COMMANDS
     - MORE!
-- add food spawn in
-- add a: command to change xp, biome, etc
+    - fix bee abil
+    - add kd tourney
+- ~~add food spawn in~~
+- add to "a:" command to change ~~xp~~, biome, etc
 - add former animal tiers/work on hierarchy
 - update abilities
 - eagle abil
