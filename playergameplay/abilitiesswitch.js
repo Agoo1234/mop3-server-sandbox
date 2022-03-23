@@ -429,7 +429,7 @@ function abilitiesswitcher(ability) {
             }
 
             break
-        case 60: // honeybey sting
+        case 60: // honeybee sting
             button = {
 
                 abil_currentclick: 0,
@@ -440,7 +440,7 @@ function abilitiesswitcher(ability) {
                 abil_active: false,
                 abil_time: 6.5,
                 abil_timestamp: Date.now(),
-                abil_noflags: [20, 9, 19],
+                abil_noflags: [],
                 abil_bardivideusable: 1,
             }
 
