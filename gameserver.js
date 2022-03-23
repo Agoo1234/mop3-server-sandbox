@@ -693,7 +693,6 @@ function gameserver(port) {
 
 							break
 						case 5:
-
 							//		  logger("log",ws.player.pos.x + ":" + ws.player.pos.y)
 							if (!ws.exists) return;
 							if (!ws.isalive) return
