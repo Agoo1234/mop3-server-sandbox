@@ -743,6 +743,27 @@ function animalswitcher(player) {
             player.abilitys.button_w = abilitiesswitcher(60);
             player.abilitys.button_w_mini = abilitiesswitcher(100);
             break
+        case 40: // bee
+            player.tier = 14
+            player.bar.normalbar = 0
+            player.whichbiome = 0
+            player.nextxp = 10000000;
+
+            player.baserad = 13
+            player.addrad = 0.1
+            player.lessrad = 0.05
+            player.flags.push(26)
+
+            player.speeds = {
+                landspeed: 6,
+                oceanspeed: 6,
+                arcticspeed: 6,
+                lavaspeed: 6,
+                flyspeed: 10,
+            }
+            player.bar.maxairbarpercentage = 250
+            player.abilitys.button_w_mini = abilitiesswitcher(100);
+            break
         //dif
 
         default:
