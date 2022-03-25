@@ -93,6 +93,9 @@ function gameserver(port) {
 
 	const TESTING = true
 	const serverVer = 99;
+	let kdtourney = false;
+	let tourneylist = [];
+	var tourneyhandle;
 
 
 	const MAXBOTS = game.load(4)
@@ -190,7 +193,7 @@ function gameserver(port) {
 
 	var ips = []
 
-	let playersNum = 0;
+	playersNum = 0;
 
 	this.entities = {};
 
@@ -572,10 +575,8 @@ function gameserver(port) {
 							if (!ws.exists) return;
 							if (!ws.player) return;
 							ws.player.isupgrading = false
-							if ((TESTING || ws.isdeveloper) && !ws.player.flags.includes(87)) {
+							if ((TESTING || ws.isdeveloper) && !ws.player.flags.includes(87) && ws.player.arenaid == 0 && !tourneylist.includes(ws.player.id)) {
 								ws.player.xp = ws.player.nextxp
-
-
 							}
 							break
 						case 56:
@@ -597,7 +598,7 @@ function gameserver(port) {
 							if (!ws.exists) return;
 							if (!ws.player) return;
 
-							if ((TESTING || ws.isdeveloper) && !ws.player.flags.includes(87)) {
+							if ((TESTING || ws.isdeveloper) && !ws.player.flags.includes(87) && ws.player.arenaid == 0  && !tourneylist.includes(ws.player.id)) {
 								ws.player.isupgrading = false
 								switch (ws.player.tier) {
 
@@ -785,6 +786,10 @@ function gameserver(port) {
 								}
 								devcmd = new devcommands(ws, msgData, writer, util.randomNumber, self.entities, self.ws_new)
 								msgData = devcmd.getMsg()
+								tourneylist = devcmd.tourneyList()
+								if (tourneylist.length > 0) {
+									kdtourney = true;
+								}
 
 							}
 
@@ -1164,6 +1169,8 @@ function gameserver(port) {
 	pa()
 }
 gameserver.prototype = {
-
+	countPlayers: function () {
+		return playersNum;
+	}
 }
 module.exports = gameserver
