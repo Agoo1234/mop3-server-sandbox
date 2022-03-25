@@ -3,12 +3,18 @@ const hill = require("../entity/objects/objects/hill")
 const newobjids = require("../objids")
 const utils1 = require("./IMPmodules/util");
 const utils = new utils1()
+const arena = require("../entity/objects/objects/arena")
 
 const aobjids = new newobjids()
 
 function makeMsgNone() {
     newMsg = ""
 }
+tlist = []
+function whosInTourney() {
+    return tlist
+}
+
 function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
     newMsg = msgData
 
@@ -275,38 +281,43 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 }
                 makeMsgNone()
                 break;
-            case "kdtourney":
+            case "kdtourney": // MUST RUN TWICE FOR IT TO WORK
                 inlist = []
                 for (let da in entities) {
                     if(!entities[da].isbot && entities[da].type == 2) {
                         entities[da].secondaryType = 79
                         entities[da].xp = 10000000
                         entities[da].arenaid = 0
-                        inlist.push(entities[da])
+                        inlist.push(entities[da].id)
                     }
                 }
                 for (i = 0; i < inlist.length; i += 2) {
-                    entities[inlist[i]].isflying = false
-                    entities[inlist[i+1]].isflying = false
-                    entities[inlist[i]].z = 0
-                    entities[inlist[i+1]].z = 0
-                    entities[inlist[i]].isgliding = false
-                    entities[inlist[i+1]].isgliding = false
-                    entities[inlist[i]].specType = 0
-                    entities[inlist[i+1]].specType = 0
-                    entities[inlist[i]].specType2 = 0
-                    entities[inlist[i+1]].specType2 = 0
+                    if (entities[inlist[i]] && entities[inlist[i+1]]) {
+                        entities[inlist[i]].isflying = false
+                        entities[inlist[i+1]].isflying = false
+                        entities[inlist[i]].z = 0
+                        entities[inlist[i+1]].z = 0
+                        entities[inlist[i]].isgliding = false
+                        entities[inlist[i+1]].isgliding = false
+                        entities[inlist[i]].specType = 0
+                        entities[inlist[i+1]].specType = 0
+                        entities[inlist[i]].specType2 = 0
+                        entities[inlist[i+1]].specType2 = 0
 
-
-                    arenaid = aobjids.giveid(true)
-                    entities[arenaid] = new arena(arenaid, entities[inlist[i]].x, entities[inlist[i]].y, entities[inlist[i]], entities[inlist[i+1]])
-                    entities[inlist[i]].arenaid = arenaid
-                    entities[inlist[i+1]].arenaid = arenaid
-                    entities[inlist[i]].flags.push(33)
-                    entities[inlist[i+1]].flags.push(33)
-                    console.log("kdtourney")
+                        arenaid = aobjids.giveid(true)
+                        entities[arenaid] = new arena(arenaid, entities[inlist[i]].x, entities[inlist[i]].y, entities[inlist[i]], entities[inlist[i+1]])
+                        entities[inlist[i]].arenaid = arenaid
+                        entities[inlist[i+1]].arenaid = arenaid
+                        entities[inlist[i]].flags.push(33)
+                        entities[inlist[i+1]].flags.push(33)
+                        console.log("kdtourney")
+                        console.log(entities[inlist[i]].name + " " + entities[inlist[i+1]].name)
+                    }
+                    else {
+                        // insert code here to add it to participants, continue on in brackets
+                    }
                 }
-                console.log(inlist)
+                tlist = inlist
                 inlist = [] // save memory or something
                 makeMsgNone()
                 break;
@@ -319,6 +330,10 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
 devcommands.prototype = {
     getMsg: function() {
         return newMsg;
-    }
+    },
+
+    tourneyList: function() {
+        return whosInTourney()
+    },
 }
 module.exports = devcommands;
