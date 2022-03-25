@@ -1,6 +1,5 @@
 const vector = require('victor');
 const utils1 = require("../../../modules/IMPmodules/util")
-const gameserver = require("../../../gameserver")
 const biomepos = require("../../../playergameplay/newbiomepos");
 const animalswitcher = require("../../../playergameplay/animalswitch.js");
 const tierswitcher = require("../../../playergameplay/tierswitch.js");
