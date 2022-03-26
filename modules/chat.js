@@ -190,13 +190,25 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
 
 
             case "x": // set xp
-            case "xp": // set xp
-            
-                if(parseInt(initial[1] != null)) {
-                    ws.player.xp = + parseInt(initial[1])
-                    makeMsgNone()
+                if (parseInt(initial[1]) != NaN && initial.length > 1) {
+                    amount = parseInt(initial[1])
                 }
-    
+                else {
+                    amount = 1000
+                }
+                ws.player.xp = + amount
+                makeMsgNone()
+                break;
+
+            case "xp": // set xp
+                if (parseInt(initial[1]) != NaN && initial.length > 1) {
+                    amount = parseInt(initial[1])
+                }
+                else {
+                    amount = 1000
+                }
+                ws.player.xp = + amount
+                makeMsgNone()
                 break;
             case "createobj": // create object
 
