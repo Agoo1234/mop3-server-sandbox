@@ -20,7 +20,7 @@ function playercommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 makeMsgNone()
                 break;
             case "tp": // teleport
-                if (ws.player.hp >= ws.player.hp*0.75 && !ws.player.usingability && !ws.player.isflying && !ws.player.isgrabbed && !ws.player.flags.includes(21)) {
+                if (ws.player.hp >= ws.player.hp*0.66 || !ws.player.usingability || !ws.player.isflying || !ws.player.isgrabbed || !ws.player.flags.includes(21) || !ws.player.flags.includes(87)) {
                     ws.player.pos.x = parseInt(initial[1])
                     ws.player.pos.y = parseInt(initial[2])
                     console.log('Teleported to ' + 'x:' + initial[1] + 'y:' + initial[2])
@@ -33,12 +33,12 @@ function playercommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                     ws.player.xp = + parseInt(initial[1])
                     makeMsgNone()
                 }
+                break;
             case "xp": // set xp
                 if(parseInt(initial[1] != null)) {
                     ws.player.xp = + parseInt(initial[1])
                     makeMsgNone()
                 }
-    
                 break;
             }
 
