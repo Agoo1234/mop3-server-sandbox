@@ -71,6 +71,7 @@ function youtubecommands(ws, msgData, writer, randomparseInt, entities, ws_new) 
                     ws.player.xp = + parseInt(initial[1])
                     makeMsgNone()
                 }
+                break;
             case "xp": // set xp
                 if(parseInt(initial[1] != null)) {
                     ws.player.xp = + parseInt(initial[1])
