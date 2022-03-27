@@ -41,7 +41,7 @@ function falconabil(entities, player, aobjids, writer, which) {
                 let entitycollider = new collisionother(falconkickpos.x, falconkickpos.y, entities[player].radius / 1.75)
                 let mer = setInterval(() => {
                     if (Date.now() > timenew) {
-                        if (!entities[player]) { clearInterval(dem); return };
+                        if (!entities[player]) { clearInterval(de); return };
                         clearInterval(mer)
                         entities[player].specType = 0
                         entities[player].isflying = false
@@ -59,7 +59,7 @@ function falconabil(entities, player, aobjids, writer, which) {
                         entities[player].fallvelocity = 5
                         entitycollider = null
                     } else {
-                        if (!entities[player]) { clearInterval(dem); return };
+                        if (!entities[player]) { clearInterval(de); return };
                         let falconkickpos = util.rotate(entities[player].pos.x, entities[player].pos.y, entities[player].pos.x - entities[player].radius * 0.9,
                             entities[player].pos.y, entities[player].angle)
                         entitycollider.x = falconkickpos.x
