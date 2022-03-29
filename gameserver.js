@@ -709,9 +709,10 @@ function gameserver(port) {
 
 						case 19:
 							if (!ws.exists) return;
-							if (!ws.isalive) return
+							if (!ws.isalive) return;
 							let msgLen = MsgReader.readUInt16();
 							let msgData = util.decode_utf8(MsgReader.readName((msgLen)));
+							if (msgData.length > 35) return;
 
 							timestamp = new Date;
 							console.log(timestamp + ': USER CHAT: ' + ws.player.name + 'ID: ' + ws.player.id + ': ' + msgData + ': length: ' + msgData.length)
