@@ -575,7 +575,7 @@ function gameserver(port) {
 							if (!ws.exists) return;
 							if (!ws.player) return;
 							ws.player.isupgrading = false
-							if ((TESTING || ws.isdeveloper) && !ws.player.flags.includes(87) && ws.player.arenaid == 0 && !tourneylist.includes(ws.player.id) && ws.player.hp > ws.player.maxhp * 0.75) {
+							if ((TESTING || ws.isdeveloper) && !ws.player.flags.includes(87) && ws.player.arenaid == 0 && !tourneylist.includes(ws.player.id) && ws.player.hp > ws.player.maxhp * 0.15) {
 								ws.player.xp = ws.player.nextxp
 							}
 							break
@@ -598,7 +598,7 @@ function gameserver(port) {
 							if (!ws.exists) return;
 							if (!ws.player) return;
 
-							if ((TESTING || ws.isdeveloper) && !ws.player.flags.includes(87) && ws.player.arenaid == 0 && !tourneylist.includes(ws.player.id) && ws.player.hp > ws.player.maxhp * 0.75) {
+							if ((TESTING || ws.isdeveloper) && !ws.player.flags.includes(87) && ws.player.arenaid == 0 && !tourneylist.includes(ws.player.id) && ws.player.hp > ws.player.maxhp * 0.15) {
 								ws.player.isupgrading = false
 								switch (ws.player.tier) {
 
