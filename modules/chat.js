@@ -332,8 +332,14 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                 tlist = inlist
                 inlist = [] // save memory or something
                 makeMsgNone()
-                break;
                 // TODO: make it so global variable "kdtourney" is true (with list) and everyone who is kd in list 1v1s until winner (gets to become final boss or something - for now infinite xp)
+                break;
+            case "healall":
+                for (let da in entities) {
+                    if(entities[da].player) {
+                        entities[da].hp = entities[da].maxhp
+                    }
+                }
             }
 
     }
