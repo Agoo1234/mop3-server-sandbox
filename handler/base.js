@@ -7,6 +7,7 @@ const writer1 = require("../modules/IMPmodules/writer.js");
 const writer = new writer1();
 const utils1 = require("../modules/IMPmodules/util");
 const util = new utils1()
+const kdtourney = require('./worldupdate/kdtourney')
 
 
 function basehandle(entities, player, aobjids, serverstarted, ws_news) {

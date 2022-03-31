@@ -1,5 +1,6 @@
 const game1 = require('../game');
 const game = new game1()
+const kdtourney = require('./worldupdate/kdtourney');
 
 function deathhandle(entities, player2, player1) {
     try {
@@ -19,6 +20,11 @@ function deathhandle(entities, player2, player1) {
             entities[player2].isdead = true
             if (entities[player2].ws) {
                 entities[player2].ws.spectatingon = player1
+            }
+            if (kdtourney.happening()) {
+                if (kdtourney.getList().includes(entities[player2].id)) {
+                    kdtourney.setList(kdtourney.getList().splice(kdtourney.getList().indexOf(entities[player2].id)))
+                }
             }
 
         }

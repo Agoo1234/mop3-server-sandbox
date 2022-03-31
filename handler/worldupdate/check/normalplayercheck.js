@@ -7,7 +7,7 @@ const apexchoices = require("../../../playergameplay/choices/choices")
 const holdingobj = require("../../../playergameplay/abilitiesuse/abilitiesholdbutton")
 const tierload1 = require("../../../playergameplay/choices/tierschoice")
 const tierload = new tierload1()
-
+const tourney = require("../kdtourney");
 
 const player = require("../../../entity/objects/objects/player.js")
 const util = new utils1()
@@ -17,12 +17,16 @@ const game1 = require("../../../game");
 const game = new game1()
 
 function normalplayercheck(aobjids, ws_new, entities, i, writer) {
-
-    
-
-
-
-
+    kdtourney = new tourney(aobjids, ws_new, entities, [444, 213, 432, 445])
+    if (kdtourney.happening()) {
+        if (entities[i].type == 2 && entities[i].class == "Player") { // KD TOURNEY CODE, SEPERATE. MIGHT MERGE WITH NORMAL EVENTUALLY
+            if (kdtourney.getList().includes(entities[i].id) && kdtourney.happening()) {
+                if (entities[i].arenaid == 0 && !entities[i].isdead) {
+                    kdtourney.addAvail(entities[i].id);
+                }
+            }
+        }
+    }
     if (entities[i].type == 14 && entities[i].secondaryType == 68) {
         if (entities[i].state != 2) {
             if (entities[entities[i].p2id] != undefined) {
@@ -210,8 +214,6 @@ function normalplayercheck(aobjids, ws_new, entities, i, writer) {
                 newplayer.infability = oldplayer.infability
                 newplayer.godmode = oldplayer.godmode
                 newplayer.species = oldplayer.species
-
-
                 new biomepos(entities, newplayer)
 
                 entities[newplayer.id] = newplayer
