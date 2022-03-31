@@ -30,6 +30,37 @@ function abilities(aobjids, player, entities) {
                     new tailslapuse(aobjids, entities, player)
                 }
             }
+            if (entities[player].secondaryType == 46) {
+                if (entities[player].abilitys.button_w.abil_currentclick == 0 && !entities[player].abilitys.button_w.abil_active) {
+                    entities[player].abilitys.button_w.abil_active = true
+                    entities[player].goingsky = true
+                    entities[player].usingability = true
+                    entities[player].isflying = true
+                    entities[player].zoomwidth *= 2
+                    entities[player].zoomheight *= 2
+                    entities[player].playcamera /= 2;
+
+
+                } else if (entities[player].abilitys.button_w.abil_currentclick == 0 && entities[player].abilitys.button_w.abil_active && entities[player].z == 50) {
+                    entities[player].goingsky = false
+                    let flyhigh = setInterval(() => {
+                        if (entities[player]) {
+                            if (entities[player].z == 0) {
+                                clearInterval(flyhigh)
+                                entities[player].usingability = false
+                                entities[player].isflying = false
+                                entities[player].abilitys.button_w.abil_active = false
+                                entities[player].zoomwidth /= 2;
+                                entities[player].zoomheight /= 2;
+                                entities[player].playcamera *= 2;
+
+                            }
+                        } else {
+                            clearInterval(flyhigh)
+                        }
+                    }, 0);
+                }
+            }
         }
     }
 }
