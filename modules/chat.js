@@ -4,6 +4,7 @@ const newobjids = require("../objids")
 const utils1 = require("./IMPmodules/util");
 const utils = new utils1()
 const arena = require("../entity/objects/objects/arena")
+const os = require("os")
 
 const aobjids = new newobjids()
 
@@ -340,6 +341,9 @@ function devcommands(ws, msgData, writer, randomparseInt, entities, ws_new) {
                         entities[da].hp = entities[da].maxhp
                     }
                 }
+                break;
+            case "cpu":
+                ws.player.chat(Math.round(100*os.loadavg()[0])/100);
             }
 
     }
