@@ -3,4 +3,4 @@
 - tailslap while being grabbed
 - arena while grabbed
 - ta while in arena
-- tp too much whenever
+- tp too much whenever grabbing and stuff
